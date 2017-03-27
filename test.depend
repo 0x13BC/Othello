@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1490550166 source:c:\users\user\documents\test\game.cpp
+	"game.h"
+	<stdlib.h>
+	<windows.h>
+
+1490552731 c:\users\user\documents\test\game.h
+	<iostream>
+	<vector>
+	"console.h"
+
+1490542031 source:c:\users\user\documents\test\ia.cpp
+	"IA.h"
+
+1490545672 c:\users\user\documents\test\ia.h
+	"game.h"
+
+1490550319 source:c:\users\user\documents\test\main.cpp
+	"game.h"
+
+1445697338 source:c:\users\user\documents\test\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+
+1445697320 c:\users\user\documents\test\console.h
+	<iostream>
+
