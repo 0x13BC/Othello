@@ -26,3 +26,24 @@
 1445697320 c:\users\user\documents\test\console.h
 	<iostream>
 
+1490687722 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+
+1490687722 c:\users\gerondeau\documents\ing2\prjct-info-s2\console.h
+	<iostream>
+
+1490690645 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\game.cpp
+	"game.h"
+	<stdlib.h>
+	<windows.h>
+
+1490687722 c:\users\gerondeau\documents\ing2\prjct-info-s2\game.h
+	<iostream>
+	<vector>
+	"console.h"
+
+1490688479 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\main.cpp
+	"game.h"
+

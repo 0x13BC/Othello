@@ -36,10 +36,10 @@ void game::display()
     system("cls");
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
-    {
-        ecran->gotoLigCol(i, 3*j);
-        cout << get_symbol(m_board[i][j]);
-    }
+        {
+            ecran->gotoLigCol(i, 3*j);
+            cout << get_symbol(m_board[i][j]);
+        }
 }
 
 int game::Place(int x, int y, char col)
@@ -59,38 +59,38 @@ int game::Place(int x, int y, char col)
 void game::deplacement(int* x, int* y, int direction)
 {
     switch (direction)
-            {
-            case 1:
-                (*x)++;
-                break;
-            case 2:
-                (*x)++;
-                (*y)++;
-                break;
-            case 3:
-                (*y)++;
-                break;
-            case -1:
-                (*x)--;
-                break;
-            case -2:
-                (*x)--;
-                (*y)--;
-                break;
-            case -3:
-                (*y)--;
-                break;
-            case 4:
-                (*x)++;
-                (*y)--;
-                break;
-            case -4:
-                (*x)--;
-                (*y)++;
-                break;
-            }
+    {
+    case 1:
+        (*x)++;
+        break;
+    case 2:
+        (*x)++;
+        (*y)++;
+        break;
+    case 3:
+        (*y)++;
+        break;
+    case -1:
+        (*x)--;
+        break;
+    case -2:
+        (*x)--;
+        (*y)--;
+        break;
+    case -3:
+        (*y)--;
+        break;
+    case 4:
+        (*x)++;
+        (*y)--;
+        break;
+    case -4:
+        (*x)--;
+        (*y)++;
+        break;
+    }
 }
-vector <vector <int> > game::valid_move(int x ,int y, char col)
+vector <vector <int> > game::valid_move(int x,int y, char col)
 {
     int direction=-4;
     int base_include=0;
@@ -100,38 +100,50 @@ vector <vector <int> > game::valid_move(int x ,int y, char col)
     vector <vector <int> > ret_val;
     vector <vector <int> > buff;
     vector <int> coord;
+    ret_val.clear();
     coord.push_back(x);
     coord.push_back(y);
-    for (int i=0 ; i<8; i++ )
+    if(m_board[x][y]=='e')
     {
-        buff.clear();
-        buffx= x;
-        buffy= y;
-        found=0;
-        while (buffx<8 && buffx>=0 && buffy<8 && buffy >=0 && found==0)
+        for (int i=0 ; i<8; i++ )
         {
-            deplacement(&buffx, &buffy, direction);
-            coord = {buffx, buffy};
+            buff.clear();
+            buffx= x;
+            buffy= y;
+            found=0;
+            while (buffx<8 && buffx>=0 && buffy<8 && buffy >=0 && found==0)
+            {
+                deplacement(&buffx, &buffy, direction);
+                coord = {buffx, buffy};
 
-            if(buffx<8 && buffx>=0 && buffy<8 && buffy >=0)
-            {
-            if(m_board[buffx][buffy]=='e') found=-1; //casse vide, pas de chaine a ce niveau
-            else if (m_board[buffx][buffy]== col) found=1; // case de la bvonne couleur chaine trouvée ou deux poions adjacents
-            else
-            {
-                if(!base_include)
+                if(buffx<8 && buffx>=0 && buffy<8 && buffy >=0)
                 {
-                    base_include=1;
-                    buff.push_back({x,y});
+                    if(m_board[buffx][buffy]=='e') found=-1; //casse vide, pas de chaine a ce niveau
+                    else if (m_board[buffx][buffy]== col) found=1; // case de la bvonne couleur chaine trouvée ou deux poions adjacents
+                    else
+                    {
+                        if(!base_include)
+                        {
+                            base_include=1;
+                            coord= {x,y};
+                            buff.push_back(coord);
+                            coord = {buffx, buffy};
+                        }
+                        buff.push_back(coord);
+                        // case de la couleur opposé, retenue pour changement le cas échéant
+                    }
                 }
-                buff.push_back(coord); // case de la couleur opposé, retenue pour changement le cas échéant
             }
+
+            if(found ==1)
+            {
+                for (unsigned int j=0; j<buff.size(); j++ ) ret_val.push_back({buff[j][0], buff[j][1]}); // ajout des coord de cases a retourner à la liste
             }
+            direction++;
         }
-        if(found ==1) ret_val.insert(ret_val.end(), buff.begin(), buff.end()); // ajout des coord de cases a retourner à la liste
-        direction++;
     }
     return ret_val;
+
 }
 int game::Getwin()
 {
@@ -144,8 +156,8 @@ int game::Getwin()
             {
                 if(!valid_move(i,j,'b').empty() || !valid_move(i,j,'w').empty()) test=0;
             }
-    }
-if (test)
+        }
+    if (test)
     {
 
         for(int i=0; i<8; i++)
@@ -177,5 +189,6 @@ if (test)
             //cout << "White wins " << countw << " to " << countb << endl << "Congratulations!";
         }
 
-}
+    }
+    return 0;
 }

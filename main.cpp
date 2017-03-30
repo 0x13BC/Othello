@@ -6,7 +6,21 @@ int main()
 {
     game jeu;
     jeu.display();
-    jeu.Place(3, 5, 'w');
+    jeu.Place(4, 5, 'w');
+    int x,y;
+    char a='b';
+    while (1)
+    {
+        cin >> x;
+        cin >> y;
+        if (jeu.Place(x,y,a))
+        {
+
+            if(a=='b') a='w';
+            else a='b';
+        }
+        jeu.display();
+    }
 
     jeu.display();
     return 0;
