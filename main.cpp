@@ -6,22 +6,26 @@ int main()
 {
     game jeu;
     jeu.display();
-    jeu.Place(4, 5, 'w');
-    jeu.Getwin();
-    jeu.display();
+    IA joueur2;
+    vector <int> buff;
     int x,y;
     char a='b';
     while (1)
     {
+
+        do
+        {
         cin >> x;
         cin >> y;
-        if (!jeu.Place(x,y,a))
-        {
-
-            if(a=='b') a='w';
-            else a='b';
-        }
         jeu.display();
+        }while (jeu.Place(x,y,a));
+
+        jeu.display();
+        jeu.Getwin(&joueur2);
+        buff=joueur2.play();
+        jeu.Place(buff[0],buff[1],buff[2]);
+        jeu.display();
+        jeu.Getwin();
 
     }
 

@@ -1,0 +1,44 @@
+#include "ia.h"
+
+IA::IA(char col)
+:m_col(col)
+{
+}
+
+IA::~IA()
+{
+    //dtor
+}
+
+void IA::clear_moves()
+{
+    m_right_moves.clear();
+}
+
+void IA::add_right_move(int x, int y, int nb)
+{
+    m_right_moves.push_back({x,y, nb});
+}
+
+void IA::get_heuristics(int x, int y, vector < vector<int> > plateau)
+{
+    vector <int> values;
+    //int buff;
+    for(unsigned int i=0; i<m_right_moves.size() ; i++)
+    {
+        // fonction heuristique complexe pour plus tard
+        // pour l'instant c'est jamais appelé
+    }
+
+}
+vector <int> IA::play()
+{
+    vector <int> buff={0,0,0};
+    for(unsigned int i=0; i<m_right_moves.size() ; i++)
+    {
+        if(m_right_moves[i][2]>buff[2]) buff=m_right_moves[i];
+    }
+    buff[2]=m_col;
+    clear_moves();
+    return buff;
+}

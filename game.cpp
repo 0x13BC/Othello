@@ -125,7 +125,6 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
                         found=1;
                         if(!base_include)
                         {
-                            system("pause");
                             base_include=1;
                             coord[0]= x; coord[1]= y;
                             buff.push_back(coord);
@@ -152,16 +151,26 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
     return ret_val;
 
 }
-int game::Getwin()
+int game::Getwin(IA* ia)
 {
     int test=1;
     int countb=0, countw=0, counte=0;
+    int buff;
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
         {
             if(m_board[i][j]=='e')
             {
-                if(!valid_move(i,j,'b').empty() || !valid_move(i,j,'w').empty()) test=0;
+                if((buff=valid_move(i,j,'b').size()))
+                {
+                    test=0;
+                    if(ia) if(ia->m_col=='b') ia->add_right_move(i,j,buff);
+                }
+                if( (buff=valid_move(i,j,'w').size()))
+                    {
+                    test=0;
+                    if(ia) if(ia->m_col=='w') ia->add_right_move(i,j,buff);
+                }
             }
         }
     if (test)
@@ -186,14 +195,14 @@ int game::Getwin()
         if(countb>countw)
         {
             countb+=counte;
-            return countb;
-            //cout << "Black wins " << countb << " to " << countw << endl << "Congratulations!";
+            //return countb;
+            cout << "Black wins " << countb << " to " << countw << endl << "Congratulations!";
         }
         else
         {
             countw+=counte;
-            return countw;
-            //cout << "White wins " << countw << " to " << countb << endl << "Congratulations!";
+            //return countw;
+            cout << "White wins " << countw << " to " << countb << endl << "Congratulations!";
         }
 
     }

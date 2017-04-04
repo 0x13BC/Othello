@@ -1,14 +1,12 @@
-#include <iostream>
-#include <vector>
-#include "console.h"
-using namespace std;
+
+#include "ia.h"
 class game
 {
     public:
         game();
         ~game();
 
-        int Getwin();
+        int Getwin(IA* ia=NULL);
         int Place(int x, int y, char col);
         void display();
 
