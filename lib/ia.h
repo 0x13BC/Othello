@@ -2,7 +2,7 @@
 #define IA_H
 #include <iostream>
 #include <vector>
-#include "../console.h"
+#include "./console.h"
 
 using namespace std;
 

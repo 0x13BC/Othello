@@ -47,3 +47,11 @@
 1490688479 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\main.cpp
 	"game.h"
 
+1490988490 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+
+1490988490 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\console.h
+	<iostream>
+

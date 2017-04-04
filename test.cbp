@@ -32,11 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="console.cpp" />
-		<Unit filename="console.h" />
-		<Unit filename="game.cpp" />
-		<Unit filename="game.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="lib/console.h" />
+		<Unit filename="lib/game.h" />
+		<Unit filename="lib/ia.h" />
+		<Unit filename="src/console.cpp" />
+		<Unit filename="src/game.cpp" />
+		<Unit filename="src/ia.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

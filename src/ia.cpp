@@ -1,4 +1,4 @@
-#include "ia.h"
+#include "../lib/ia.h"
 
 IA::IA(char col)
 :m_col(col)

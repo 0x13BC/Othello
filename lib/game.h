@@ -1,5 +1,5 @@
 
-#include "ia.h"
+#include "./ia.h"
 class game
 {
     public:
