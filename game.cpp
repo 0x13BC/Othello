@@ -37,7 +37,7 @@ void game::display()
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
         {
-            ecran->gotoLigCol(i, 3*j);
+            ecran->gotoLigCol(2*i, 3*j);
             cout << get_symbol(m_board[i][j]);
         }
 }
@@ -97,6 +97,7 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
     int buffx= x;
     int buffy= y;
     int found=0;
+    int test_void=0;
     vector <vector <int> > ret_val;
     vector <vector <int> > buff;
     vector <int> coord;
@@ -114,23 +115,29 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
             while (buffx<8 && buffx>=0 && buffy<8 && buffy >=0 && found==0)
             {
                 deplacement(&buffx, &buffy, direction);
-                coord = {buffx, buffy};
+                coord[0]= buffx; coord[1]= buffy;
 
                 if(buffx<8 && buffx>=0 && buffy<8 && buffy >=0)
                 {
                     if(m_board[buffx][buffy]=='e') found=-1; //casse vide, pas de chaine a ce niveau
-                    else if (m_board[buffx][buffy]== col) found=1; // case de la bvonne couleur chaine trouvée ou deux poions adjacents
-                    else
+                    else if (m_board[buffx][buffy]== col && test_void)  // case de la bonne couleur chaine trouvée ou deux pions adjacents
                     {
+                        found=1;
                         if(!base_include)
                         {
+                            system("pause");
                             base_include=1;
-                            coord= {x,y};
+                            coord[0]= x; coord[1]= y;
                             buff.push_back(coord);
-                            coord = {buffx, buffy};
+                            coord[0]= buffx; coord[1]= buffy;
                         }
                         buff.push_back(coord);
                         // case de la couleur opposé, retenue pour changement le cas échéant
+                    }
+                    else
+                    {
+                        test_void=1;
+                        buff.push_back(coord);
                     }
                 }
             }
