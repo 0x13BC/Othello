@@ -72,6 +72,15 @@ void Console::_setColor(int back, int front)
     SetConsoleTextAttribute(H,front*16+back);
 }
 
+void Console::showCursor(bool visible)
+{
+    HANDLE MyHandlemoron=GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO ci;
+    ci.dwSize=1;
+    ci.bVisible=visible;
+    SetConsoleCursorInfo(MyHandlemoron,&ci);
+}
+
 void Console::setColor(Color col)
 {
     switch (col)

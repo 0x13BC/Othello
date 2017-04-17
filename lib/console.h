@@ -41,6 +41,7 @@ class Console
         bool isKeyboardPressed();
         int getInputKey();
         void setColor(Color col);
+        void showCursor(bool visible);
 };
 
 #endif // CONSOLE_H_INCLUDED

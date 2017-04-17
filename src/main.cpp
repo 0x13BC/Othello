@@ -1,33 +1,39 @@
-#include "./lib/game.h"
+#include "../lib/game.h"
 /*
 
 */
 int main()
 {
-    game jeu;
-    jeu.display();
-    IA joueur2;
-    vector <int> buff;
-    int x,y;
-    char a='b';
+
+    /** Initialisation **/
+    game jeu;                       //Instanciation du Jeu par défaut
+    IA joueur2;                     //Instanciation de L'IA (Blanc)
+    vector <int> buff;              //Buffer {x,y,couleur}
+    int x,y;                        // [0;7]
+    char a='b';                     // Couleur du joueur b: Black et w: White
+
+    jeu.display();                  //Affichage du plateau
+
+    /** Boucle de jeu **/
     while (1)
     {
 
-        do
+        do                          // Boucle de saisie: Fait cette boucle...
         {
-        cin >> x;
-        cin >> y;
-        jeu.display();
-        }while (jeu.Place(x,y,a));
+        cin >> x;                   // Saisie ligne
+        cin >> y;                   // Saisie colonne
+        jeu.display();              //Affichage du plateau --Suppr
+        }while (jeu.Place(x,y,a));  // Tant que la saisie du joueur est incorrecte
 
-        jeu.display();
-        jeu.Getwin(&joueur2);
-        buff=joueur2.play();
-        jeu.Place(buff[0],buff[1],buff[2]);
-        jeu.display();
-        jeu.Getwin();
+        jeu.display();              //Affichage du plateau
+        jeu.Getwin(&joueur2);       // L'IA prend les solutions
+        buff=joueur2.play();        // L'IA compare les solutions et joue
+        jeu.Place(buff[0],buff[1],buff[2]); // Le choix de l'ia est placé
+        jeu.display(); // Affichage de la grille
+        jeu.Getwin();  // Vérification de win
 
     }
+    /**Fin de la boucle de jeu **/
 
     jeu.display();
     return 0;
