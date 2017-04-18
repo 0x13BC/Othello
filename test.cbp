@@ -35,10 +35,12 @@
 		<Unit filename="lib/console.h" />
 		<Unit filename="lib/game.h" />
 		<Unit filename="lib/ia.h" />
+		<Unit filename="lib/time.hpp" />
 		<Unit filename="src/console.cpp" />
 		<Unit filename="src/game.cpp" />
 		<Unit filename="src/ia.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/time.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
