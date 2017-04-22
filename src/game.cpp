@@ -43,11 +43,8 @@ void game::display(int x, int y)
         for(int j=0; j<8; j++)
         {
             ecran->gotoLigCol(x+2*i, y+3*j);
-<<<<<<< HEAD
-            switch(m_board[i][j])
-            ecran->setColor(COLOR_GREEN);
-=======
->>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
+            //switch(m_board[i][j])
+            //ecran->setColor(COLOR_GREEN);
             cout << get_symbol(m_board[i][j]);
         }
 }
