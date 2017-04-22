@@ -12,6 +12,11 @@ game::game()
     m_board[4][3]='w';
 }
 
+game::game (vector< vector<char> > board)
+:m_board(board)
+{
+
+}
 game::~game()
 {
     //dtor
@@ -29,15 +34,17 @@ char game::get_symbol(char input)
     }
     return 0;
 }
-void game::display()
+void game::display(int x, int y)
 {
     Console* ecran;
     ecran= Console::getInstance();
-    system("cls");
+    if(x==0 && y==0) system("cls");
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
         {
-            ecran->gotoLigCol(2*i, 3*j);
+            ecran->gotoLigCol(x+2*i, y+3*j);
+            switch(m_board[i][j])
+            ecran->setColor(COLOR_GREEN);
             cout << get_symbol(m_board[i][j]);
         }
 }
@@ -112,6 +119,8 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
             buffx= x;
             buffy= y;
             found=0;
+            test_void=0;
+            if(i==4) direction++;
             while (buffx<8 && buffx>=0 && buffy<8 && buffy >=0 && found==0)
             {
                 deplacement(&buffx, &buffy, direction);
@@ -119,9 +128,11 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
 
                 if(buffx<8 && buffx>=0 && buffy<8 && buffy >=0)
                 {
-                    if(m_board[buffx][buffy]=='e') found=-1; //casse vide, pas de chaine a ce niveau
-                    else if (m_board[buffx][buffy]== col && test_void)  // case de la bonne couleur chaine trouvée ou deux pions adjacents
+                    if(m_board[buffx][buffy]=='e') found=-1; //case vide, pas de chaine a ce niveau
+                    else if (m_board[buffx][buffy]== col)  // case de la bonne couleur chaine trouvée ou deux pions adjacents
                     {
+                        if(test_void)
+                        {
                         found=1;
                         if(!base_include)
                         {
@@ -132,20 +143,24 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
                         }
                         buff.push_back(coord);
                         // case de la couleur opposé, retenue pour changement le cas échéant
+                        }
+                        else found=-1;
                     }
                     else
                     {
                         test_void=1;
                         buff.push_back(coord);
                     }
+
                 }
             }
 
             if(found ==1)
             {
-                for (unsigned int j=0; j<buff.size(); j++ ) ret_val.push_back({buff[j][0], buff[j][1]}); // ajout des coord de cases a retourner à la liste
+                for (unsigned int j=0; j<buff.size(); j++ ) ret_val.push_back(buff[j]); // ajout des coord de cases a retourner à la liste
             }
             direction++;
+
         }
     }
     return ret_val;

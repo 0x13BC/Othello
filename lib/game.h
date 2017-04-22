@@ -1,18 +1,26 @@
-
-#include "./ia.h"
+#include "ia.h"
 class game
 {
+
+
+
+
+
     public:
+
+        //CONSTRUCTORS & DESTRUCTORS
+        char get_symbol(char input);
         game();
         ~game();
 
-        int Getwin(IA* ia=NULL);
-        int Place(int x, int y, char col);
-        void display();
-
-    protected:
-        char get_symbol(char input);
+        //PUBLIC METHODS
         vector <vector <int> >  valid_move(int x, int y, char col);
-        void deplacement (int* x, int* y,int direction);
+        int Place(int x, int y, char col);
+        int Getwin(IA* ia=NULL);
+        void display(int x=0, int y=0);
         vector <vector <char> > m_board;
+    protected:
+        game (vector <vector <char> > board);
+        void deplacement (int* x, int* y,int direction);
+
 };

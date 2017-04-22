@@ -1,57 +1,44 @@
 # depslib dependency file v1.0
-1490550166 source:c:\users\user\documents\test\game.cpp
-	"game.h"
+1492509417 source:c:\users\david\desktop\info 2\src\console.cpp
+	"../lib/console.h"
+	<conio.h>
+	<windows.h>
+
+1492509417 c:\users\david\desktop\info 2\lib\console.h
+	<iostream>
+
+1492559157 source:c:\users\david\desktop\info 2\src\game.cpp
+	"../lib/game.h"
 	<stdlib.h>
 	<windows.h>
 
-1490552731 c:\users\user\documents\test\game.h
+1492797796 c:\users\david\desktop\info 2\lib\game.h
+	"ia.h"
+
+1492793174 c:\users\david\desktop\info 2\lib\ia.h
 	<iostream>
 	<vector>
-	"console.h"
+	"./console.h"
 
-1490542031 source:c:\users\user\documents\test\ia.cpp
-	"IA.h"
+1492627173 source:c:\users\david\desktop\info 2\src\ia.cpp
+	"../lib/situation.h"
 
-1490545672 c:\users\user\documents\test\ia.h
+1492627173 c:\users\david\desktop\info 2\lib\situation.h
 	"game.h"
 
-1490550319 source:c:\users\user\documents\test\main.cpp
-	"game.h"
-
-1445697338 source:c:\users\user\documents\test\console.cpp
-	"console.h"
-	<conio.h>
+1492799198 source:c:\users\david\desktop\info 2\src\main.cpp
+	"../lib/deplacement.h"
 	<windows.h>
 
-1445697320 c:\users\user\documents\test\console.h
-	<iostream>
-
-1490687722 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\console.cpp
-	"console.h"
-	<conio.h>
+1492627356 source:c:\users\david\desktop\info 2\src\situation.cpp
+	"../lib/situation.h"
 	<windows.h>
 
-1490687722 c:\users\gerondeau\documents\ing2\prjct-info-s2\console.h
-	<iostream>
-
-1490690645 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\game.cpp
-	"game.h"
+1492798714 source:c:\users\david\desktop\info 2\src\deplacement.cpp
 	<stdlib.h>
 	<windows.h>
+	"../lib/deplacement.h"
 
-1490687722 c:\users\gerondeau\documents\ing2\prjct-info-s2\game.h
-	<iostream>
-	<vector>
-	"console.h"
-
-1490688479 source:c:\users\gerondeau\documents\ing2\prjct-info-s2\main.cpp
-	"game.h"
-
-1490988490 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\console.cpp
-	"console.h"
-	<conio.h>
-	<windows.h>
-
-1490988490 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\console.h
-	<iostream>
+1492797755 c:\users\david\desktop\info 2\lib\deplacement.h
+	"../lib/situation.h"
 
