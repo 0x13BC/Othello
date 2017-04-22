@@ -20,7 +20,7 @@ class situation : public game
         void get_moves();
         int is_end();
         void get_all_succesors();
-        int heuristique();
+        int heuristique(char col);
        //Move played that induced the situation
         vector<int> assess(char col);
         vector <int> assess2(char col);

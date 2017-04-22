@@ -82,3 +82,45 @@
 	<stdlib.h>
 	<windows.h>
 
+1492509417 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\console.cpp
+	"../lib/console.h"
+	<conio.h>
+	<windows.h>
+
+1492509417 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\console.h
+	<iostream>
+
+1492559157 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\game.cpp
+	"../lib/game.h"
+	<stdlib.h>
+	<windows.h>
+
+1492879266 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\game.h
+	"ia.h"
+
+1492882878 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\ia.h
+	<iostream>
+	<vector>
+	"./console.h"
+
+1492882728 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\ia.cpp
+	"../lib/situation.h"
+
+1492880387 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\situation.h
+	"game.h"
+
+1492882721 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\main.cpp
+	"../lib/situation.h"
+	<windows.h>
+
+1492882788 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\situation.cpp
+	"../lib/situation.h"
+	<windows.h>
+
+1492879334 source:c:\users\gerondeau\documents\prjct-2-ing2-v1\src\time.cpp
+	"../lib/Time.hpp"
+
+1492879317 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\time.hpp
+	<iostream>
+	<ctime>
+

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class time
+class Time
 {
     private:
         //ATTRIBUTS

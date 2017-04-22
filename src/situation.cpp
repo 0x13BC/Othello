@@ -7,7 +7,7 @@ situation::situation()
 situation::situation(vector< vector <char> > board, char col, int depth, int x, int y)
 :game(board), m_col(col), m_depth(depth), m_predecessor(NULL), m_x(x), m_y(y)
 {
-    vector <int> buff1={500,-150, 30,10,10,30,-150, 500}; //source de l'heuristique: Université de Valenciennes
+    vector <int> buff1={500,-150, 30,10,10,30,-150, 500}; //source de la table d'heuristique: Université de Valenciennes
     m_heuristique.push_back(buff1);
     vector <int> buff2={-150, -250, 0,0,0,0,-250,-150};
     m_heuristique.push_back(buff2);
@@ -81,7 +81,7 @@ void situation::get_all_succesors()
     }
 }
 
-int situation::heuristique()
+int situation::heuristique(char col)
 {
 
     get_moves();
@@ -95,7 +95,7 @@ int situation::heuristique()
             if(m_board[i][j]!='e')
             {
                 pions_joues++;
-                if(m_board[i][j]==m_col)
+                if(m_board[i][j]==col)
                 {
                     pions_col++;
                     val_cases+=m_heuristique[i][j];
@@ -141,7 +141,7 @@ vector <int> situation::assess(char ia_col)
     }
     else
     {
-        result={m_x,m_y,heuristique()};
+        result={m_x,m_y,heuristique(ia_col)};
         return result;
 
     }
@@ -163,28 +163,19 @@ vector <int> situation::assess2(char ia_col)
     {
         m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
-        if(ia_col==m_col){
-                buff=m_succesors[i]->assess(ia_col);
+
+        buff=m_succesors[i]->assess2(ia_col);
         if(result[2] <= buff[2])
         {
             result=buff;
         }
-
-        }
-        else
-            {
-                if(test){if(m_succesors[i]->heuristique() >= buffer->heuristique()) buffer=m_succesors[i];
-                }
-                else buffer=m_succesors[i];
-            }
     }
     if(ia_col!=m_col) return buffer->assess2(ia_col);
-    if(m_depth!=0) result={m_x,m_y,result[2]};
-
+    if(m_depth!=0) result={m_x,m_y,-result[2]};
     }
     else
     {
-        result={m_x,m_y,heuristique()};
+        result={m_x,m_y,-heuristique(ia_col)};
         return result;
 
     }
