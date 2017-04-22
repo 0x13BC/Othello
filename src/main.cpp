@@ -1,39 +1,57 @@
-#include "../lib/game.h"
+#include "../lib/situation.h"
+#include <windows.h>
 /*
 
 */
 int main()
 {
-
-    /** Initialisation **/
-    game jeu;                       //Instanciation du Jeu par défaut
-    IA joueur2;                     //Instanciation de L'IA (Blanc)
-    vector <int> buff;              //Buffer {x,y,couleur}
-    int x,y;                        // [0;7]
-    char a='b';                     // Couleur du joueur b: Black et w: White
-
-    jeu.display();                  //Affichage du plateau
-
-    /** Boucle de jeu **/
+    game jeu;
+    jeu.display();
+    IA joueur2;
+    vector <int> buff;
+    int x,y;
+    char a='b';
     while (1)
     {
-
-        do                          // Boucle de saisie: Fait cette boucle...
+        situation* test= new situation(jeu.m_board, a);
+        test->get_moves();
+        if(test->m_moves.size())
         {
-        cin >> x;                   // Saisie ligne
-        cin >> y;                   // Saisie colonne
-        jeu.display();              //Affichage du plateau --Suppr
-        }while (jeu.Place(x,y,a));  // Tant que la saisie du joueur est incorrecte
+        do
+        {
 
-        jeu.display();              //Affichage du plateau
-        jeu.Getwin(&joueur2);       // L'IA prend les solutions
-        buff=joueur2.play();        // L'IA compare les solutions et joue
-        jeu.Place(buff[0],buff[1],buff[2]); // Le choix de l'ia est placé
-        jeu.display(); // Affichage de la grille
-        jeu.Getwin();  // Vérification de win
+        cin >> x;
+        cin >> y;
+        jeu.display();
+
+        }while (jeu.Place(x,y,a));
+        }
+        else
+        {
+            cout<< "Player cannot play!";
+            system("pause");
+        }
+
+        jeu.display();
+        jeu.Getwin(&joueur2);
+        test->m_col=joueur2.m_col;
+        test->get_moves();
+        if(test->m_moves.size())
+        {
+        buff=joueur2.play(1, jeu.m_board);
+        cout << "IA plays in " << buff[0] << "  " << buff[1]<< endl;
+        system("pause");
+        }
+        else
+        {
+            cout << "IA cannot play!" <<endl;
+            system("pause");
+        }
+        jeu.Place(buff[0],buff[1],buff[2]);
+        jeu.display();
+        jeu.Getwin();
 
     }
-    /**Fin de la boucle de jeu **/
 
     jeu.display();
     return 0;
