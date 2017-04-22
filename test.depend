@@ -42,3 +42,30 @@
 1492797755 c:\users\david\desktop\info 2\lib\deplacement.h
 	"../lib/situation.h"
 
+1491344602 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\console.cpp
+	"../lib/console.h"
+	<conio.h>
+	<windows.h>
+
+1491344581 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\console.h
+	<iostream>
+
+1491429023 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\ia.cpp
+	"../lib/ia.h"
+
+1491427929 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\ia.h
+	<iostream>
+	<vector>
+	"./console.h"
+
+1491432383 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\main.cpp
+	"../lib/game.h"
+
+1491427753 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\game.h
+	"./ia.h"
+
+1491428861 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\game.cpp
+	"../lib/game.h"
+	<stdlib.h>
+	<windows.h>
+

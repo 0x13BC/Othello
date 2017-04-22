@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 #include "../lib/deplacement.h"
+=======
+#include "../lib/situation.h"
+>>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
 #include <windows.h>
 /*
 
@@ -15,15 +19,27 @@ int main()
 
     while (1)
     {
+<<<<<<< HEAD
         situation* test= new situation(jeu.m_board, J1.getcol());
+=======
+        situation* test= new situation(jeu.m_board, a);
+>>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
         test->get_moves();
         if(test->m_moves.size())
         {
         do
         {
 
+<<<<<<< HEAD
         J1.deplacement(&x,&y,&jeu);
         }while (jeu.Place(x/2,y/3,J1.getcol()));
+=======
+        cin >> x;
+        cin >> y;
+        jeu.display();
+
+        }while (jeu.Place(x,y,a));
+>>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
         }
         else
         {
