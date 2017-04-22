@@ -110,7 +110,15 @@ int situation::heuristique(char col)
 
     return value;
 }
-
+vector <int> situation::assess0(char ia_col)
+{
+    get_all_succesors();
+    vector<int> result;
+    srand(time(NULL));
+    int i=rand() % m_succesors.size();
+    result={m_succesors[i]->m_x, m_succesors[i]->m_y};
+    return result;
+}
 vector <int> situation::assess(char ia_col)
 {
     vector <int> result={0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)};
@@ -182,3 +190,55 @@ vector <int> situation::assess2(char ia_col)
 
     return result;
 }
+
+
+vector <int> situation::assess3(char ia_col, int al, int be)
+{
+    vector <int> result={0,0,(ia_col==m_col? MIN_HEURISTIC+1 : MAX_HEURISTIC-1)};
+    vector <int> buff;
+    int alpha= al;
+    int beta= be;
+    get_all_succesors();
+    if (m_depth!=SEARCH_DEPTH)
+    {
+    for (unsigned int i=0; i<m_succesors.size(); i++)
+    {
+        //m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+
+
+        if(ia_col != m_col){
+
+        if(result[2]>alpha){ buff=m_succesors[i]->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2]), beta);
+
+        if(result[2] >= buff[2])
+        {
+            result=buff;
+        }}
+        //else system("pause");
+        }
+        else {
+
+                if(result[2]<beta){ buff=m_succesors[i]->assess3(ia_col,alpha, (result[2]==MIN_HEURISTIC+1? MAX_HEURISTIC: result[2]));
+
+                if(result[2] <= buff[2])
+        {
+
+            result=buff;
+
+        }}
+        //else system("pause");
+        }
+
+    }
+    if(m_depth!=0) result={m_x,m_y,result[2]};
+    }
+    else
+    {
+        result={m_x,m_y,heuristique(ia_col)};
+        return result;
+
+    }
+
+    return result;
+}
+

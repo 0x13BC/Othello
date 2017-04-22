@@ -49,7 +49,7 @@ vector <int> IA::play(int mode, vector < vector <char> > board )
     else
     {
     situation initiale(board, m_col, 0);
-    buff=initiale.assess(m_col);
+    buff=initiale.assess0(m_col);
     }
 
     buff[2]=m_col;

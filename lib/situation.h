@@ -22,8 +22,10 @@ class situation : public game
         void get_all_succesors();
         int heuristique(char col);
        //Move played that induced the situation
+       vector <int> assess0(char ia_col);
         vector<int> assess(char col);
         vector <int> assess2(char col);
+        vector <int> assess3(char ia_col, int al=MIN_HEURISTIC, int be=MAX_HEURISTIC);
     protected:
 
     private:

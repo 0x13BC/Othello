@@ -1,4 +1,4 @@
-#include "time.hpp"
+#include "../lib/time.hpp"
 
 /*------------CONSTRUCTORS-&-DESTRUCTORS------------*/
 time::time()

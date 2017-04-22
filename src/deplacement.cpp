@@ -1,6 +1,7 @@
+#include "../lib/deplacement.h"
 #include <stdlib.h>
 #include <windows.h>
-#include "../lib/deplacement.h"
+
 
 
 Joueur::Joueur(char col) : m_col(col), x(0), y(0)

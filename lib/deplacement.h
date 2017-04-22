@@ -1,5 +1,4 @@
-#ifndef DEPLACEMENT_H_INCLUDED
-#define DEPLACEMENT_H_INCLUDED
+
 #include "../lib/situation.h"
 class Joueur
 {
@@ -15,4 +14,3 @@ public:
 
 };
 
-#endif // DEPLACEMENT_H_INCLUDED

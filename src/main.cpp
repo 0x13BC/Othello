@@ -1,4 +1,4 @@
-#include "../lib/situation.h"
+#include "../lib/deplacement.h"
 #include <windows.h>
 /*
 
@@ -10,11 +10,11 @@ int main()
     IA joueur2;
     Joueur J1('b');
     vector <int> buff;
-    int x=0,y=0;
-
+    int x=0, y=0;
+    class time timer;
     while (1)
     {
-        situation* test= new situation(jeu.m_board, a);
+        situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
         if(test->m_moves.size())
         {
@@ -22,12 +22,8 @@ int main()
         {
 
         J1.deplacement(&x,&y,&jeu);
-        }while (jeu.Place(x/2,y/3,J1.getcol()));
-        cin >> x;
-        cin >> y;
-        jeu.display();
 
-        }while (jeu.Place(x,y,a));
+        }while (jeu.Place(x/2,y/3,J1.getcol()));
         }
         else
         {
@@ -41,8 +37,12 @@ int main()
         test->get_moves();
         if(test->m_moves.size())
         {
+        timer.start();
         buff=joueur2.play(1, jeu.m_board);
         cout << "IA plays in " << buff[0] << "  " << buff[1]<< endl;
+        cout << "COMPUTE TIME " ;
+        timer.stop();
+         timer.GetSec();
         system("pause");
         }
         else

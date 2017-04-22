@@ -6,20 +6,20 @@
 
 using namespace std;
 
-class Time
+class time
 {
     private:
         //ATTRIBUTS
-        time_t m_initTime,m_endTime,m_psTime;
+        time_t m_inittime,m_endtime,m_pstime;
         float m_sec;
         bool m_pause;
 
     public:
 
         //CONSTRUCTOR & DESTRUCTOR
-        Time();
-        ~Time();
-        Time(const Time& other);
+        time();
+        ~time();
+        time(const time& other);
 
         //METHODS
         void start();
