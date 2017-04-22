@@ -8,9 +8,10 @@ int main()
     game jeu;
     jeu.display();
     IA joueur2;
+    Joueur J1('b');
     vector <int> buff;
-    int x,y;
-    char a='b';
+    int x=0,y=0;
+
     while (1)
     {
         situation* test= new situation(jeu.m_board, a);
@@ -20,6 +21,8 @@ int main()
         do
         {
 
+        J1.deplacement(&x,&y,&jeu);
+        }while (jeu.Place(x/2,y/3,J1.getcol()));
         cin >> x;
         cin >> y;
         jeu.display();

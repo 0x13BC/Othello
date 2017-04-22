@@ -1,15 +1,25 @@
 #include "ia.h"
 class game
 {
+<<<<<<< HEAD
+
+
+
+=======
     protected:
 
         //PROTECTED METHODS
         char get_symbol(char input);
+>>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
 
 
     public:
 
         //CONSTRUCTORS & DESTRUCTORS
+<<<<<<< HEAD
+        char get_symbol(char input);
+=======
+>>>>>>> 76cde11a25ab0e5a89999cbf68b86e669bfccbbe
         game();
         ~game();
 
