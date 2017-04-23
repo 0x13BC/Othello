@@ -9,7 +9,8 @@
     int x=0, y=0;
 Joueur J1('b');
 Joueur J2('w');
-while (1)
+int fin =1;
+while (fin)
 {
  situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
@@ -30,6 +31,7 @@ while (1)
             jeu.valid_move(x,y,J1.getcol());
             jeu.Getwin();
             system("pause");
+            fin =0;
         }
         jeu.display();
 
@@ -54,6 +56,7 @@ while (1)
             jeu.valid_move(x,y,J2.getcol());
             jeu.Getwin();
             system("pause");
+            fin =0;
         }
         jeu.display();
 }
