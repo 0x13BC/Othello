@@ -62,7 +62,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
  }
 
 
- int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col)
+ int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col, int affichage)
  {
     game* buffin= (board.size()>1? new game(board):new game());
     game jeu(buffin);
@@ -100,7 +100,8 @@ int JvsJ(vector< vector <char> > board, char col_start)
         {
         timer.start();
 
-        buff=joueur2.play(ia_lvl, jeu.m_board);
+
+        buff=joueur2.play(ia_lvl, jeu.m_board, affichage);
         cout << "IA plays in " << buff[0] << "  " << buff[1]<< endl;
         cout << "COMPUTE TIME " ;
         timer.stop();

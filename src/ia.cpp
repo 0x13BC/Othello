@@ -36,7 +36,7 @@ void IA::get_heuristics(int x, int y, vector < vector<int> > plateau)
     }
 
 }
-vector <int> IA::play(int mode, vector < vector <char> > board )
+vector <int> IA::play(int mode, vector < vector <char> > board, int affichage )
 {
     vector <int> buff={0,0,0};
     situation initiale(board, m_col, 0);
@@ -46,13 +46,13 @@ vector <int> IA::play(int mode, vector < vector <char> > board )
         buff=initiale.assess0(m_col); //Aleatoire
         break;
         case 1:
-        buff=initiale.assess(m_col); //MinMax
+        buff=initiale.assess(m_col, affichage); //MinMax
         break;
         case 2:
-        buff=initiale.assess2(m_col); //NegaMax
+        buff=initiale.assess2(m_col, affichage); //NegaMax
         break;
         case 3:
-        buff=initiale.assess3(m_col); //AlphaBeta
+        buff=initiale.assess3(m_col,MIN_HEURISTIC, MAX_HEURISTIC, affichage); //AlphaBeta
         break;
 
     }

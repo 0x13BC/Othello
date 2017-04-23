@@ -6,6 +6,7 @@
 void menu ()
 {
   int fin =1;
+  int affichage=0;
   while (fin)
 {
 cout<<"L'Othello"<<endl;
@@ -24,13 +25,16 @@ vector <char> buff;
     cin>>a;
 switch (a)
 {
+case 0:
+    affichage=1;
+    system("cls");
+    break;
 case 1:
     ///faire un autre menu avec tous les autres paramètres des IA.
-    system("cls");
-    menuAide();
+
     system("cls");
 
-    JvsIA({{}},menuTypeIA(),choixcouleur());
+    JvsIA({{}},menuTypeIA(),choixcouleur(), affichage);
     break;
 case 2:
     ///lancer le jeu J vs J
@@ -71,7 +75,7 @@ case 3:
         {
 
             file >> mode;
-            JvsIA(load_board, mode, player_turn);
+            JvsIA(load_board, mode, player_turn, affichage);
         }
     file.close();
 
