@@ -54,12 +54,16 @@ case 3:
         for(int j=0; j<8; j++)
         {
             file >> in;
-            if(in=='e' || in=='w' || in=='b') buff.push_back(a);
+            if(in=='e' || in=='w' || in=='b')
+            {
+                buff.push_back(in);
+            }
+
+
 
         }
         load_board.push_back(buff);
       }
-
     file >> player_turn;
     file >> mode;
     if(!mode) JvsJ(load_board, player_turn);

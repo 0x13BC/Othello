@@ -12,7 +12,11 @@ game::game()
     m_board[4][3]='w';
 }
 
+game::game(game* jeu)
+:m_board(jeu->m_board)
+{
 
+}
 game::game (vector< vector<char> > board)
 :m_board(board)
 {

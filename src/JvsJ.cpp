@@ -5,7 +5,7 @@
 int JvsJ(vector< vector <char> > board, char col_start)
 {
     game* buffin= (board.size()? new game(board):new game());
-    game jeu= *buffin;
+    game jeu(buffin);
   //  vector <int> buff;
     int x=0, y=0;
 Joueur J1(col_start);
@@ -64,7 +64,8 @@ while (1)
 
  int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col)
  {
-     game jeu;
+      game* buffin= (board.size()? new game(board):new game());
+    game jeu(buffin);
     jeu.display();
     Joueur J1(play_col);
     IA joueur2((play_col=='b' ? 'w': 'b'));
