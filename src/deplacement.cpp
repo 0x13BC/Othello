@@ -63,7 +63,7 @@ while(test!=0)
 
             test=0;
         break;
-    case ' ':
+    case 'r':
         jeu->save(play_col, gamemode, ia_lvl);
         return 1;
     break;

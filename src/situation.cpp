@@ -105,7 +105,7 @@ vector <int> situation::assess(char ia_col)
 {
     vector <int> result= {0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)};
     vector <int> buff;
-
+    int affichage=0;
     get_all_successors();
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
@@ -114,7 +114,8 @@ vector <int> situation::assess(char ia_col)
         {
         for (unsigned int i=0; i<m_succesors.size(); i++)
         {
-            if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+            if(screen->isKeyboardPressed())if(screen->getInputKey()==' ') affichage = 1;
+            if(affichage) m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
             buff=m_succesors[i]->assess(ia_col);
             if(ia_col == m_col)
@@ -152,6 +153,7 @@ vector <int> situation::assess2(char ia_col)
 {
     vector <int> result= {0,0, MIN_HEURISTIC};
     vector <int> buff;
+    int affichage=0;
 
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
@@ -161,7 +163,8 @@ vector <int> situation::assess2(char ia_col)
         {
         for (unsigned int i=0; i<m_succesors.size(); i++)
         {
-            if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+            if(screen->isKeyboardPressed())if(screen->getInputKey()==' ') affichage=1;
+                if(affichage)m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
             buff=m_succesors[i]->assess2(ia_col);
             if(result[2] <= buff[2])
@@ -215,6 +218,7 @@ vector <int> situation::assess3(char ia_col, int al, int be)
     int alpha= al;
     int beta= be;
     situation* buffer=NULL;
+    int affichage=0;
 
     vector < vector <char> > board_save=m_board;
 
@@ -227,7 +231,8 @@ vector <int> situation::assess3(char ia_col, int al, int be)
         {
         for(unsigned int i=0; i<m_moves.size(); i++)
         {
-            //if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')buffer->display(8*(buffer->m_depth>4 ? (int)(buffer->m_depth/4):0),(buffer->m_depth)*30);
+            if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')affichage=1;
+
 
             if(ia_col != m_col)
             {
@@ -243,7 +248,7 @@ vector <int> situation::assess3(char ia_col, int al, int be)
 
                     buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);
 
-
+                    if(affichage)buffer->display(8*(buffer->m_depth>4 ? (int)(buffer->m_depth/4):0),(buffer->m_depth)*30);
                     m_board=board_save;
 
                     buff=buffer->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2]), beta);
@@ -265,8 +270,8 @@ vector <int> situation::assess3(char ia_col, int al, int be)
                         Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
                     }
 
-
                     buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);
+                    if(affichage)buffer->display(8*(buffer->m_depth>4 ? (int)(buffer->m_depth/4):0),(buffer->m_depth)*30);
 
 
                     m_board=board_save;

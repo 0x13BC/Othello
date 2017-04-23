@@ -8,7 +8,6 @@ class situation : public game
         virtual ~situation();
         char m_col;
         int m_depth;
-        situation* m_predecessor;
         int m_x,m_y;
         vector <situation*> m_succesors;
 
