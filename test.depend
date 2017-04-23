@@ -221,9 +221,10 @@
 1492966094 c:\users\user\documents\prjct-v1\lib\game.h
 	"ia.h"
 
-1492962614 c:\users\user\documents\prjct-v1\lib\ia.h
+1492971298 c:\users\user\documents\prjct-v1\lib\ia.h
 	<iostream>
 	<vector>
+	<string>
 	<iostream>
 	<fstream>
 	"console.h"
@@ -238,7 +239,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1492970027 source:c:\users\user\documents\prjct-v1\src\situation.cpp
+1492971079 source:c:\users\user\documents\prjct-v1\src\situation.cpp
 	"../lib/situation.h"
 	<windows.h>
 

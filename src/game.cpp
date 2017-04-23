@@ -25,8 +25,7 @@ game::~game()
 
 void game::save(char play_col, int gamemode, int ia_lvl)
 {
-
-    ofstream myfile;
+    fstream myfile;
     string input;
     system("cls");
     cout << "Quel nom donner au fichier de sauvegarde? (sans extension)" << endl;
@@ -36,11 +35,15 @@ void game::save(char play_col, int gamemode, int ia_lvl)
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
         {
-            myfile << m_board[i][j] << " ";
+            cout << m_board[i][j];
+            myfile.put(m_board[i][j]) ;
+            myfile.put( ' ');
         }
         myfile << play_col;
         if(gamemode) {
-                myfile << gamemode << " " << ia_lvl;
+                myfile << gamemode ;
+                myfile.put( ' ');
+                myfile << ia_lvl;
         }
         myfile.close();
         cout << "Partie enregistree! A bientot!";
