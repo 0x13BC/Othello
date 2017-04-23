@@ -125,12 +125,12 @@ vector <int> situation::assess(char ia_col)
     vector <int> buff;
 
     get_all_succesors();
-
+    Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
     for (unsigned int i=0; i<m_succesors.size(); i++)
     {
-        m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+        if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
         buff=m_succesors[i]->assess(ia_col);
         if(ia_col == m_col){
@@ -153,7 +153,7 @@ vector <int> situation::assess(char ia_col)
         return result;
 
     }
-
+    screen->deleteInstance();
     return result;
 }
 
@@ -163,14 +163,13 @@ vector <int> situation::assess2(char ia_col)
     vector <int> buff;
     situation* buffer=NULL;
     get_all_succesors();
-    int test=0;
+    Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
 
     for (unsigned int i=0; i<m_succesors.size(); i++)
     {
-        m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
-
+       if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
         buff=m_succesors[i]->assess2(ia_col);
         if(result[2] <= buff[2])
@@ -187,7 +186,7 @@ vector <int> situation::assess2(char ia_col)
         return result;
 
     }
-
+    screen->deleteInstance();
     return result;
 }
 
@@ -199,11 +198,13 @@ vector <int> situation::assess3(char ia_col, int al, int be)
     int alpha= al;
     int beta= be;
     get_all_succesors();
+    Console* screen= screen->getInstance();
+
     if (m_depth!=SEARCH_DEPTH)
     {
     for (unsigned int i=0; i<m_succesors.size(); i++)
     {
-        //m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+        //if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
 
 
         if(ia_col != m_col){
@@ -238,7 +239,7 @@ vector <int> situation::assess3(char ia_col, int al, int be)
         return result;
 
     }
-
+    screen->deleteInstance();
     return result;
 }
 

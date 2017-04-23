@@ -3,7 +3,7 @@
 
 void menu();
 void menuAide();
-void menuTypeIA();
+int menuTypeIA();
 
 
 #endif // MENU_H_INCLUDED

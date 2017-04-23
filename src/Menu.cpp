@@ -27,6 +27,7 @@ case 1:
     menuAide();
     system("cls");
     menuTypeIA();
+    JvsIA(a);
     break;
 case 2:
     ///lancer le jeu J vs J
@@ -52,27 +53,20 @@ default:
 }}
 
 
-void menuTypeIA()
+int menuTypeIA()
 {
     cout<<"Quel type de type de jeu voulez vous faire "<<endl<<endl;
     cout<<"1- niveau (1)"<<endl;
     cout<<"2- Niveau (2)"<<endl;
     cout<<"3- Niveau (3)"<<endl;
     ///et mettre les bonus
-    int a;
-    cin>>a;
-    switch(a)
+    int a=0;
+    do
     {
-    case 1:
-        system("cls");
-        break;
-    case 2:
-        system("cls");
-        break;
-    case 3:
-        system("cls");
-        break;
-    }
+        cin>>a;
+        if (a<=0 && a>=4) cout << "Entree invalide";
+    }while (a<=0 && a>=4);
+    return a;
 }
 
 void menuAide() ///bonus

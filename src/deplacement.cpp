@@ -67,7 +67,7 @@ while(test!=0)
 
 
         }
-       // cout<< " ";
+        cout<< " ";
         Sleep(300);
         truc->gotoLigCol((*x),(*y));
         cout<< jeu->get_symbol(jeu->m_board[*x/2][*y/3]);
