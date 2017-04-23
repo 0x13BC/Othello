@@ -109,16 +109,17 @@ char choixcouleur()
 int menuTypeIA()
 {
     cout<<"Quel type de type de jeu voulez vous faire "<<endl<<endl;
+    cout <<"0- niveau (0)" << endl;
     cout<<"1- niveau (1)"<<endl;
     cout<<"2- Niveau (2)"<<endl;
     cout<<"3- Niveau (3)"<<endl;
     ///et mettre les bonus
-    int a=0;
+    int a=-1;
     do
     {
         cin>>a;
-        if (a<=0 || a>=4) cout << "Entree invalide";
-    }while (a<=0 || a>=4);
+        if (a<0 || a>=4) cout << "Entree invalide";
+    }while (a<0 || a>=4);
     return a;
 }
 

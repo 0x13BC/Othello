@@ -244,14 +244,14 @@ int game::Getwin()
         {
             countb+=counte;
 
-            cout << "Black wins " << countb << " to " << countw << endl << "Congratulations!";
+            cout << "Black " << get_symbol('b') << " wins " << countb << " to " << countw << endl << "Congratulations!";
             return 1;
         }
         else
         {
             countw+=counte;
 
-            cout << "White wins " << countw << " to " << countb << endl << "Congratulations!";
+            cout << "White " << get_symbol('w') << " wins " << countw << " to " << countb << endl << "Congratulations!";
             return 1;
         }
 
