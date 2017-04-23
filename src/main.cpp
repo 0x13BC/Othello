@@ -1,11 +1,13 @@
 #include "../lib/deplacement.h"
+#include "../lib/menu.h"
 #include <windows.h>
 /*
 
 */
 int main()
 {
-    game jeu;
+menu();
+ /*   game jeu;
     jeu.display();
     IA joueur2;
     Joueur J1('b');
@@ -58,4 +60,5 @@ int main()
 
     jeu.display();
     return 0;
+*/
 }

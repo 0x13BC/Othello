@@ -133,3 +133,62 @@
 1492886642 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\deplacement.h
 	"../lib/situation.h"
 
+1492883223 source:c:\users\david\documents\prjct-v1\src\console.cpp
+	"../lib/console.h"
+	<conio.h>
+	<windows.h>
+
+1492883222 c:\users\david\documents\prjct-v1\lib\console.h
+	<iostream>
+
+1492929567 source:c:\users\david\documents\prjct-v1\src\game.cpp
+	"../lib/game.h"
+	<stdlib.h>
+	<windows.h>
+
+1492929567 c:\users\david\documents\prjct-v1\lib\game.h
+	"ia.h"
+
+1492929567 c:\users\david\documents\prjct-v1\lib\ia.h
+	<iostream>
+	<vector>
+	"./console.h"
+	"time.hpp"
+
+1492929567 c:\users\david\documents\prjct-v1\lib\time.hpp
+	<iostream>
+	<ctime>
+
+1492929567 source:c:\users\david\documents\prjct-v1\src\ia.cpp
+	"../lib/situation.h"
+
+1492929567 c:\users\david\documents\prjct-v1\lib\situation.h
+	"game.h"
+
+1492940266 source:c:\users\david\documents\prjct-v1\src\main.cpp
+	"../lib/deplacement.h"
+	"../lib/menu.h"
+	<windows.h>
+
+1492929567 c:\users\david\documents\prjct-v1\lib\deplacement.h
+	"../lib/situation.h"
+
+1492929567 source:c:\users\david\documents\prjct-v1\src\situation.cpp
+	"../lib/situation.h"
+	<windows.h>
+
+1492929567 source:c:\users\david\documents\prjct-v1\src\deplacement.cpp
+	"../lib/deplacement.h"
+	<stdlib.h>
+	<windows.h>
+
+1492929567 source:c:\users\david\documents\prjct-v1\src\time.cpp
+	"../lib/time.hpp"
+
+1492940445 source:c:\users\david\documents\prjct-v1\src\menu.cpp
+	"../lib/menu.h"
+	"../lib/situation.h"
+	<windows.h>
+
+1492940266 c:\users\david\documents\prjct-v1\lib\menu.h
+
