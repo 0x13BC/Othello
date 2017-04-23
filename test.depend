@@ -207,23 +207,25 @@
 1492956215 c:\users\user\documents\prjct-v1\lib\console.h
 	<iostream>
 
-1492956215 source:c:\users\user\documents\prjct-v1\src\deplacement.cpp
+1492966044 source:c:\users\user\documents\prjct-v1\src\deplacement.cpp
 	"../lib/deplacement.h"
 	<stdlib.h>
 	<windows.h>
 
-1492956215 c:\users\user\documents\prjct-v1\lib\deplacement.h
+1492966634 c:\users\user\documents\prjct-v1\lib\deplacement.h
 	"../lib/situation.h"
 
-1492956215 c:\users\user\documents\prjct-v1\lib\situation.h
+1492967725 c:\users\user\documents\prjct-v1\lib\situation.h
 	"game.h"
 
-1492956215 c:\users\user\documents\prjct-v1\lib\game.h
+1492966094 c:\users\user\documents\prjct-v1\lib\game.h
 	"ia.h"
 
-1492958941 c:\users\user\documents\prjct-v1\lib\ia.h
+1492962614 c:\users\user\documents\prjct-v1\lib\ia.h
 	<iostream>
 	<vector>
+	<iostream>
+	<fstream>
 	"console.h"
 	"time.hpp"
 
@@ -231,37 +233,37 @@
 	<iostream>
 	<ctime>
 
-1492956215 source:c:\users\user\documents\prjct-v1\src\game.cpp
+1492968138 source:c:\users\user\documents\prjct-v1\src\game.cpp
 	"../lib/game.h"
 	<stdlib.h>
 	<windows.h>
 
-1492958970 source:c:\users\user\documents\prjct-v1\src\situation.cpp
+1492970027 source:c:\users\user\documents\prjct-v1\src\situation.cpp
 	"../lib/situation.h"
 	<windows.h>
 
 1492956215 source:c:\users\user\documents\prjct-v1\src\time.cpp
 	"../lib/time.hpp"
 
-1492958377 source:c:\users\user\documents\prjct-v1\src\ia.cpp
+1492970147 source:c:\users\user\documents\prjct-v1\src\ia.cpp
 	"../lib/situation.h"
 
-1492958399 source:c:\users\user\documents\prjct-v1\src\jvsj.cpp
+1492967587 source:c:\users\user\documents\prjct-v1\src\jvsj.cpp
 	<windows.h>
 	"../lib/deplacement.h"
 
-1492957328 source:c:\users\user\documents\prjct-v1\src\main.cpp
+1492962420 source:c:\users\user\documents\prjct-v1\src\main.cpp
 	"../lib/deplacement.h"
 	"../lib/menu.h"
 	<windows.h>
 
-1492958507 c:\users\user\documents\prjct-v1\lib\menu.h
+1492967543 c:\users\user\documents\prjct-v1\lib\menu.h
 
-1492959325 source:c:\users\user\documents\prjct-v1\src\menu.cpp
+1492970382 source:c:\users\user\documents\prjct-v1\src\menu.cpp
 	"../lib/menu.h"
 	"../lib/situation.h"
 	"../lib/JvsJ.h"
 	<windows.h>
 
-1492956563 c:\users\user\documents\prjct-v1\lib\jvsj.h
+1492967620 c:\users\user\documents\prjct-v1\lib\jvsj.h
 

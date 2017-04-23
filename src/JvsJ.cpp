@@ -1,18 +1,17 @@
 
 #include<windows.h>
  #include "../lib/deplacement.h"
- void JvsJ()
+int JvsJ(vector< vector <char> > board, char col_start)
 {
-    game jeu;
-
+    game* buffin= (board.size()? new game(board):new game());
+    game jeu= *buffin;
   //  vector <int> buff;
     int x=0, y=0;
-Joueur J1('b');
-Joueur J2('w');
-int fin =1;
-while (fin)
+Joueur J1(col_start);
+Joueur J2((col_start=='b'? 'w':'b'));
+while (1)
 {
- situation* test= new situation(jeu.m_board, J1.getcol());
+        situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
         if(test->m_moves.size())
         {
@@ -20,7 +19,7 @@ while (fin)
         {
         jeu.display();
         cout<<endl<<"Au tour du joueur 1"<<endl;
-        J1.deplacement(&x,&y,&jeu);
+        if(J1.deplacement(&x,&y,&jeu, J1.getcol())) return 1;
 
         }while (jeu.Place(x/2,y/3,J1.getcol()));
         }
@@ -29,12 +28,11 @@ while (fin)
 
             cout<<endl<< "Player 1 cannot play!"<<endl;
             jeu.valid_move(x,y,J1.getcol());
-            jeu.Getwin();
+
             system("pause");
-            fin =0;
         }
         jeu.display();
-
+        if(jeu.Getwin()) return 0;
 
         test->m_col=J2.getcol();
         test->get_moves();
@@ -44,7 +42,7 @@ while (fin)
         {
         jeu.display();
         cout<<endl<<"Au tour du joueur 2"<<endl;
-        J2.deplacement(&x,&y,&jeu);
+        if(J2.deplacement(&x,&y,&jeu, J2.getcol(),0)) return 1;
 
         }while (jeu.Place(x/2,y/3,J2.getcol()));
         }
@@ -54,25 +52,26 @@ while (fin)
 
             cout<<endl<< "Player 2 cannot play!"<<endl;
             jeu.valid_move(x,y,J2.getcol());
-            jeu.Getwin();
+
             system("pause");
-            fin =0;
         }
         jeu.display();
+        if(jeu.Getwin()) return 0;
 }
  }
 
 
- void JvsIA(int ia_lvl)
+ int JvsIA(vector< vector <char> > board,int ia_lvl, char play_col)
  {
      game jeu;
     jeu.display();
-    IA joueur2;
-    Joueur J1('b');
+    Joueur J1(play_col);
+    IA joueur2((play_col=='b' ? 'w': 'b'));
+
     vector <int> buff;
     int x=0, y=0;
     class time timer;
-    while (!jeu.Getwin())
+    while (1)
     {
         situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
@@ -81,7 +80,7 @@ while (fin)
         do
         {
 
-        J1.deplacement(&x,&y,&jeu);
+        if(J1.deplacement(&x,&y,&jeu,J1.getcol(), 1, ia_lvl)) return 1;
 
         }while (jeu.Place(x/2,y/3,J1.getcol()));
         }
@@ -92,7 +91,7 @@ while (fin)
         }
 
         jeu.display();
-        jeu.Getwin();
+        if(jeu.Getwin()) return 0;
         test->m_col=joueur2.m_col;
         test->get_moves();
         if(test->m_moves.size())
@@ -112,6 +111,7 @@ while (fin)
         }
         jeu.Place(buff[0],buff[1],buff[2]);
         jeu.display();
-
+        if(jeu.Getwin()) return 0;
     }
+
  }

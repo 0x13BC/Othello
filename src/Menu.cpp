@@ -18,6 +18,9 @@ cout<<"3-Charger une partie"<<endl;
 cout<<"4-Regle du jeu"<<endl;
 cout<<"5-Quitter"<<endl;
 int a;
+string input;
+vector < vector<char> > load_board;
+vector <char> buff;
     cin>>a;
 switch (a)
 {
@@ -26,8 +29,8 @@ case 1:
     system("cls");
     menuAide();
     system("cls");
-    menuTypeIA();
-    JvsIA(a);
+
+    JvsIA({{}},menuTypeIA(),choixcouleur());
     break;
 case 2:
     ///lancer le jeu J vs J
@@ -37,7 +40,45 @@ case 2:
     break;
 case 3:
     ///lancer le jeu sauvegardé
+    {
+    cout << "Quel est le nom de votre partie? (sans extension)" << endl;
+    cin >> input;
+    ifstream file;
+    char in;
+    int mode;
+    char player_turn;
+    file.open(input+".txt");
+      for(int i=0; i<8; i++)
+      {
+          buff.clear();
+        for(int j=0; j<8; j++)
+        {
+            file >> in;
+            if(in=='e' || in=='w' || in=='b') buff.push_back(a);
+        }
+        load_board.push_back(buff);
+      }
+    file >> player_turn;
+    file >> mode;
+
+    if(mode)
+
+
+      JvsJ(load_board, player_turn);
+
+
+        else
+        {
+            file >> mode;
+            JvsIA(load_board,player_turn, mode);
+        }
+    file.close();
+
+
+
+
     system("cls");
+    }
     break;
 case 4:
     ///Afficher les règles
@@ -52,7 +93,18 @@ default:
 }
 }}
 
-
+char choixcouleur()
+{
+    cout << "Quelle sera votre couleur?" << endl << "1 Blanc" << endl << "2 Noir" << endl;
+    int b=0;
+    while(b!=1 && b!=2)
+    {
+        cin >> b;
+        if(b!=1 && b!=2) cout << "saisie invalide" << endl;
+    }
+    system("cls");
+    return (b==1 ? 'w' : 'b');
+}
 int menuTypeIA()
 {
     cout<<"Quel type de type de jeu voulez vous faire "<<endl<<endl;

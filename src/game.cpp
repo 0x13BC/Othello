@@ -12,6 +12,7 @@ game::game()
     m_board[4][3]='w';
 }
 
+
 game::game (vector< vector<char> > board)
 :m_board(board)
 {
@@ -20,6 +21,30 @@ game::game (vector< vector<char> > board)
 game::~game()
 {
     //dtor
+}
+
+void game::save(char play_col, int gamemode, int ia_lvl)
+{
+
+    ofstream myfile;
+    string input;
+    system("cls");
+    cout << "Quel nom donner au fichier de sauvegarde? (sans extension)" << endl;
+    cin >> input;
+    input=input+".txt";
+  myfile.open (input);
+    for(int i=0; i<8; i++)
+        for(int j=0; j<8; j++)
+        {
+            myfile << m_board[i][j] << " ";
+        }
+        myfile << play_col;
+        if(gamemode) {
+                myfile << gamemode << " " << ia_lvl;
+        }
+        myfile.close();
+        cout << "Partie enregistree! A bientot!";
+        Sleep(300);
 }
 char game::get_symbol(char input)
 {
@@ -212,14 +237,16 @@ int game::Getwin()
         if(countb>countw)
         {
             countb+=counte;
-            //return countb;
+
             cout << "Black wins " << countb << " to " << countw << endl << "Congratulations!";
+            return 1;
         }
         else
         {
             countw+=counte;
-            //return countw;
+
             cout << "White wins " << countw << " to " << countb << endl << "Congratulations!";
+            return 1;
         }
 
     }

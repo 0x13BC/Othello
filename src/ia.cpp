@@ -45,13 +45,13 @@ vector <int> IA::play(int mode, vector < vector <char> > board )
         case 0:
         buff=initiale.assess0(m_col); //Aleatoire
         break;
-    case 1:
-      buff=initiale.assess(m_col); //MinMax
-      break;
-    case 2:
+        case 1:
+        buff=initiale.assess(m_col); //MinMax
+        break;
+        case 2:
        buff=initiale.assess2(m_col); //NegaMax
        break;
-    case 3:
+        case 3:
         buff=initiale.assess3(m_col); //AlphaBeta
         break;
 

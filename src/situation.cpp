@@ -61,25 +61,6 @@ int situation::is_end()
     else return 0;
 }
 
-void situation::get_all_succesors()
-{
-    vector < vector <char> > board_save=m_board;
-    if(is_end()) /*do nothing */;
-    else
-    {
-        for(unsigned int i=0; i<m_moves.size(); i++)
-        {
-            m_board=board_save;
-            for (unsigned int j=0; j<m_moves[i].size(); j++)
-            {
-                Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
-            }
-
-            m_succesors.push_back(new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]));
-            m_board=board_save;
-        }
-    }
-}
 
 int situation::heuristique(char col)
 {
@@ -112,7 +93,7 @@ int situation::heuristique(char col)
 }
 vector <int> situation::assess0(char ia_col)
 {
-    get_all_succesors();
+    get_all_successors();
     vector<int> result;
     srand(time(NULL));
     int i=rand() % m_succesors.size();
@@ -124,7 +105,7 @@ vector <int> situation::assess(char ia_col)
     vector <int> result={0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)};
     vector <int> buff;
 
-    get_all_succesors();
+    get_all_successors();
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
@@ -162,7 +143,7 @@ vector <int> situation::assess2(char ia_col)
     vector <int> result={0,0, MIN_HEURISTIC};
     vector <int> buff;
     situation* buffer=NULL;
-    get_all_succesors();
+    get_all_successors();
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
@@ -190,26 +171,65 @@ vector <int> situation::assess2(char ia_col)
     return result;
 }
 
+void situation::get_all_successors()
+{
+    vector < vector <char> > board_save=m_board;
+    if(is_end()) /*do nothing */;
+    else
+    {
+        for(unsigned int i=0; i<m_moves.size(); i++)
+            {
+                m_board=board_save;
+            for (unsigned int j=0; j<m_moves[i].size(); j++)
+            {
+                Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
+            }
+
+
+            m_succesors.push_back(new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]));
+            m_board=board_save;
+    }
+}
+}
 
 vector <int> situation::assess3(char ia_col, int al, int be)
 {
+
     vector <int> result={0,0,(ia_col==m_col? MIN_HEURISTIC+1 : MAX_HEURISTIC-1)};
     vector <int> buff;
     int alpha= al;
     int beta= be;
-    get_all_succesors();
+    situation* buffer;
+
+    vector < vector <char> > board_save=m_board;
+
     Console* screen= screen->getInstance();
 
     if (m_depth!=SEARCH_DEPTH)
     {
-    for (unsigned int i=0; i<m_succesors.size(); i++)
-    {
-        //if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
+        get_moves();
+
+        for(unsigned int i=0; i<m_moves.size(); i++)
+            {
+
+            for (unsigned int j=0; j<m_moves[i].size(); j++)
+            {
+                Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
+            }
+
+
+            buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);
+
+
+            m_board=board_save;
+
+
+        if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')buffer->display(8*(buffer->m_depth>4 ? (int)(buffer->m_depth/4):0),(buffer->m_depth)*30);
 
 
         if(ia_col != m_col){
 
-        if(result[2]>alpha){ buff=m_succesors[i]->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2]), beta);
+        if(result[2]>alpha){ buff=buffer->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2]), beta);
 
         if(result[2] >= buff[2])
         {
@@ -219,7 +239,7 @@ vector <int> situation::assess3(char ia_col, int al, int be)
         }
         else {
 
-                if(result[2]<beta){ buff=m_succesors[i]->assess3(ia_col,alpha, (result[2]==MIN_HEURISTIC+1? MAX_HEURISTIC: result[2]));
+                if(result[2]<beta){ buff=buffer->assess3(ia_col,alpha, (result[2]==MIN_HEURISTIC+1? MAX_HEURISTIC: result[2]));
 
                 if(result[2] <= buff[2])
         {
@@ -230,16 +250,23 @@ vector <int> situation::assess3(char ia_col, int al, int be)
         //else system("pause");
         }
 
-    }
+
     if(m_depth!=0) result={m_x,m_y,result[2]};
+    }
     }
     else
     {
         result={m_x,m_y,heuristique(ia_col)};
+        delete_successors();
         return result;
 
     }
     screen->deleteInstance();
     return result;
+}
+
+void situation::delete_successors()
+{
+      for (unsigned int i=0; i<m_succesors.size(); i++) delete(m_succesors[i]);
 }
 

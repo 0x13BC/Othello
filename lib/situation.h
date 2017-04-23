@@ -19,7 +19,8 @@ class situation : public game
 
         void get_moves();
         int is_end();
-        void get_all_succesors();
+        void get_all_successors();
+        void delete_successors();
         int heuristique(char col);
        //Move played that induced the situation
        vector <int> assess0(char ia_col);

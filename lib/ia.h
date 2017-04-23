@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <vector>
+#include <iostream>
+#include <fstream>
 #include "console.h"
 #include "time.hpp"
 #define SEARCH_DEPTH 5
