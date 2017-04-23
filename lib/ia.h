@@ -9,6 +9,7 @@
 #define SEARCH_DEPTH 5
 #define MIN_HEURISTIC -10000000
 #define MAX_HEURISTIC 1000000
+#define BOARD_SIZE 8
 using namespace std;
 
 class IA

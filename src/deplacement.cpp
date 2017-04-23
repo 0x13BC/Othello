@@ -67,7 +67,9 @@ while(test!=0)
         jeu->save(play_col, gamemode, ia_lvl);
         return 1;
     break;
-
+    case 'p':
+        return -1;
+        break;
         }
         cout<< " ";
         Sleep(300);

@@ -22,13 +22,13 @@ time::time(const time& other)
 void time::start()
 /**Demarre le timer **/
 {
-    cout<<"Start timer."<<endl;
+    //cout<<"Start timer."<<endl;
     m_inittime=clock();
 }
 void time::stop()
 /** Arrete le timer **/
 {
-    cout<<"End timer."<<endl;
+    //cout<<"End timer."<<endl;
     m_endtime=clock()-m_inittime; // DT= Temps actuel - Temps initial (AB= B-A)
     m_sec=(float)m_endtime/CLOCKS_PER_SEC;// Cast en float et divise par la fréquence
 }

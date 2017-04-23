@@ -117,8 +117,8 @@ int menuTypeIA()
     do
     {
         cin>>a;
-        if (a<=0 && a>=4) cout << "Entree invalide";
-    }while (a<=0 && a>=4);
+        if (a<=0 || a>=4) cout << "Entree invalide";
+    }while (a<=0 || a>=4);
     return a;
 }
 

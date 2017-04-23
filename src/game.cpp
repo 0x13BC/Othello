@@ -4,8 +4,8 @@
 game::game()
 {
     vector<char> buff;
-    for(int i=0; i<8; i++) buff.push_back('e');
-    for(int i=0; i<8; i++) m_board.push_back(buff);
+    for(int i=0; i<BOARD_SIZE; i++) buff.push_back('e');
+    for(int i=0; i<BOARD_SIZE; i++) m_board.push_back(buff);
     m_board[3][3]='b'; //carré de départ
     m_board[4][4]='b';
     m_board[3][4]='w';
@@ -36,8 +36,8 @@ void game::save(char play_col, int gamemode, int ia_lvl)
     cin >> input;
     input=input+".txt";
   myfile.open (input);
-    for(int i=0; i<8; i++)
-        for(int j=0; j<8; j++)
+    for(int i=0; i<BOARD_SIZE; i++)
+        for(int j=0; j<BOARD_SIZE; j++)
         {
             cout << m_board[i][j];
             myfile.put(m_board[i][j]) ;
@@ -72,8 +72,8 @@ void game::display(int x, int y)
     Console* ecran;
     ecran= Console::getInstance();
     if(x==0 && y==0) system("cls");
-    for(int i=0; i<8; i++)
-        for(int j=0; j<8; j++)
+    for(int i=0; i<BOARD_SIZE; i++)
+        for(int j=0; j<BOARD_SIZE; j++)
         {
             ecran->gotoLigCol(x+2*i, y+3*j);
             //switch(m_board[i][j])
@@ -146,7 +146,7 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
     coord.push_back(y);
     if(m_board[x][y]=='e')
     {
-        for (int i=0 ; i<8; i++ )
+        for (int i=0 ; i<BOARD_SIZE; i++ )
         {
             buff.clear();
             buffx= x;
@@ -154,12 +154,12 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
             found=0;
             test_void=0;
             if(i==4) direction++;
-            while (buffx<8 && buffx>=0 && buffy<8 && buffy >=0 && found==0)
+            while (buffx<BOARD_SIZE && buffx>=0 && buffy<BOARD_SIZE && buffy >=0 && found==0)
             {
                 deplacement(&buffx, &buffy, direction);
                 coord[0]= buffx; coord[1]= buffy;
 
-                if(buffx<8 && buffx>=0 && buffy<8 && buffy >=0)
+                if(buffx<BOARD_SIZE && buffx>=0 && buffy<BOARD_SIZE && buffy >=0)
                 {
                     if(m_board[buffx][buffy]=='e') found=-1; //case vide, pas de chaine a ce niveau
                     else if (m_board[buffx][buffy]== col)  // case de la bonne couleur chaine trouvée ou deux pions adjacents
@@ -201,33 +201,31 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
 }
 int game::Getwin()
 {
-    IA* ia=NULL;
+
 
     int test=1;
     int countb=0, countw=0, counte=0;
     int buff;
-    for(int i=0; i<8; i++)
-        for(int j=0; j<8; j++)
+    for(int i=0; i<BOARD_SIZE; i++)
+        for(int j=0; j<BOARD_SIZE; j++)
         {
-            if(m_board[i][j]=='e')
+            if(m_board[i][j]=='e' && test==1)
             {
                 if((buff=valid_move(i,j,'b').size()))
                 {
                     test=0;
-                    if(ia) if(ia->m_col=='b') ia->add_right_move(i,j,buff);
                 }
-                if( (buff=valid_move(i,j,'w').size()))
+                else if( (buff=valid_move(i,j,'w').size()))
                     {
                     test=0;
-                    if(ia) if(ia->m_col=='w') ia->add_right_move(i,j,buff);
                 }
             }
         }
     if (test)
     {
 
-        for(int i=0; i<8; i++)
-            for(int j=0; j<8; j++)
+        for(int i=0; i<BOARD_SIZE; i++)
+            for(int j=0; j<BOARD_SIZE; j++)
             {
                 switch (m_board[i][j])
                 {

@@ -39,7 +39,7 @@ void situation::get_moves()
             if(m_board[i][j]=='e')
             {
 
-                if( (buff=valid_move(i,j,m_col)).size())
+                if( (buff=valid_move(i,j,m_col)).size()>1)
                 {
                     m_moves.push_back(buff);
                     m_moves[m_moves.size()-1].push_back(m_moves[m_moves.size()-1][0]);
@@ -98,6 +98,7 @@ vector <int> situation::assess0(char ia_col)
     srand(time(NULL));
     int i=rand() % m_succesors.size();
     result= {m_succesors[i]->m_x, m_succesors[i]->m_y};
+    delete_successors();
     return result;
 }
 vector <int> situation::assess(char ia_col)
@@ -109,6 +110,8 @@ vector <int> situation::assess(char ia_col)
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
+        if(m_succesors.size())
+        {
         for (unsigned int i=0; i<m_succesors.size(); i++)
         {
             if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
@@ -129,14 +132,19 @@ vector <int> situation::assess(char ia_col)
 
         }
         if(m_depth!=0) result= {m_x,m_y,result[2]};
+        }
+        else result={m_x,m_y,heuristique(ia_col)};
     }
     else
     {
         result= {m_x,m_y,heuristique(ia_col)};
+        screen->deleteInstance();
+        delete_successors();
         return result;
 
     }
     screen->deleteInstance();
+    delete_successors();
     return result;
 }
 
@@ -144,12 +152,13 @@ vector <int> situation::assess2(char ia_col)
 {
     vector <int> result= {0,0, MIN_HEURISTIC};
     vector <int> buff;
-    situation* buffer=NULL;
-    get_all_successors();
+
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
-
+        get_all_successors();
+        if(m_succesors.size())
+        {
         for (unsigned int i=0; i<m_succesors.size(); i++)
         {
             if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')m_succesors[i]->display(8*(m_succesors[i]->m_depth>4 ? (int)(m_succesors[i]->m_depth/4):0),(m_succesors[i]->m_depth)*30);
@@ -160,16 +169,20 @@ vector <int> situation::assess2(char ia_col)
                 result=buff;
             }
         }
-        if(ia_col!=m_col) return buffer->assess2(ia_col);
         if(m_depth!=0) result= {m_x,m_y,-result[2]};
+        }
+        else result={m_x,m_y,-heuristique(ia_col)};
     }
     else
     {
         result= {m_x,m_y,-heuristique(ia_col)};
+        screen->deleteInstance();
+        delete_successors();
         return result;
 
     }
     screen->deleteInstance();
+    delete_successors();
     return result;
 }
 
@@ -201,7 +214,7 @@ vector <int> situation::assess3(char ia_col, int al, int be)
     vector <int> buff;
     int alpha= al;
     int beta= be;
-    situation* buffer;
+    situation* buffer=NULL;
 
     vector < vector <char> > board_save=m_board;
 
@@ -210,7 +223,8 @@ vector <int> situation::assess3(char ia_col, int al, int be)
     if (m_depth!=SEARCH_DEPTH)
     {
         get_moves();
-
+        if(m_moves.size())
+        {
         for(unsigned int i=0; i<m_moves.size(); i++)
         {
             //if(screen->isKeyboardPressed())if(screen->getInputKey()==' ')buffer->display(8*(buffer->m_depth>4 ? (int)(buffer->m_depth/4):0),(buffer->m_depth)*30);
@@ -270,7 +284,14 @@ vector <int> situation::assess3(char ia_col, int al, int be)
 
 
             if(m_depth!=0) result= {m_x,m_y,result[2]};
+            if(buffer)
+            {
+                delete buffer;
+                buffer=NULL;
+            }
         }
+        }
+        else result={m_x,m_y,heuristique(ia_col)};
     }
     else
     {
@@ -280,11 +301,17 @@ vector <int> situation::assess3(char ia_col, int al, int be)
 
     }
     screen->deleteInstance();
+    delete_successors();
     return result;
 }
 
 void situation::delete_successors()
 {
-    for (unsigned int i=0; i<m_succesors.size(); i++) delete(m_succesors[i]);
+    for (unsigned int i=0; i<m_succesors.size(); i++) {if(m_succesors[i])
+    {
+        delete(m_succesors[i]);
+        m_succesors[i]=NULL;
+    }
+    }
 }
 

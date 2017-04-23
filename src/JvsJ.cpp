@@ -8,6 +8,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
     game jeu(buffin);
   //  vector <int> buff;
     int x=0, y=0;
+    int dir;
 Joueur J1(col_start);
 Joueur J2((col_start=='b'? 'w':'b'));
 while (1)
@@ -20,7 +21,7 @@ while (1)
         {
         jeu.display();
         cout<<endl<<"Au tour du joueur 1"<<endl;
-        if(J1.deplacement(&x,&y,&jeu, J1.getcol())) return 1;
+        if(J1.deplacement(&x,&y,&jeu, J1.getcol()))return 1;
 
         }while (jeu.Place(x/2,y/3,J1.getcol()));
         }
@@ -64,7 +65,7 @@ while (1)
 
  int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col)
  {
-      game* buffin= (board.size()? new game(board):new game());
+    game* buffin= (board.size()>1? new game(board):new game());
     game jeu(buffin);
     jeu.display();
     Joueur J1(play_col);
