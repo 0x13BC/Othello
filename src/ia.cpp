@@ -49,8 +49,8 @@ vector <int> IA::play(int mode, vector < vector <char> > board )
         buff=initiale.assess(m_col); //MinMax
         break;
         case 2:
-       buff=initiale.assess2(m_col); //NegaMax
-       break;
+        buff=initiale.assess2(m_col); //NegaMax
+        break;
         case 3:
         buff=initiale.assess3(m_col); //AlphaBeta
         break;

@@ -55,22 +55,19 @@ case 3:
         {
             file >> in;
             if(in=='e' || in=='w' || in=='b') buff.push_back(a);
+
         }
         load_board.push_back(buff);
       }
+
     file >> player_turn;
     file >> mode;
-
-    if(mode)
-
-
-      JvsJ(load_board, player_turn);
-
-
+    if(!mode) JvsJ(load_board, player_turn);
         else
         {
+
             file >> mode;
-            JvsIA(load_board,player_turn, mode);
+            JvsIA(load_board, mode, player_turn);
         }
     file.close();
 

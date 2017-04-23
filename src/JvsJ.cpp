@@ -62,7 +62,7 @@ while (1)
  }
 
 
- int JvsIA(vector< vector <char> > board,int ia_lvl, char play_col)
+ int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col)
  {
      game jeu;
     jeu.display();
@@ -98,6 +98,7 @@ while (1)
         if(test->m_moves.size())
         {
         timer.start();
+
         buff=joueur2.play(ia_lvl, jeu.m_board);
         cout << "IA plays in " << buff[0] << "  " << buff[1]<< endl;
         cout << "COMPUTE TIME " ;
