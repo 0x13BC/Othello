@@ -8,11 +8,10 @@ int JvsJ(vector< vector <char> > board, char col_start)
     game jeu(buffin);
   //  vector <int> buff;
     int x=0, y=0;
-    int dir;
-Joueur J1(col_start);
-Joueur J2((col_start=='b'? 'w':'b'));
-while (1)
-{
+    Joueur J1(col_start);
+    Joueur J2((col_start=='b'? 'w':'b'));
+    while (1)
+    {
         situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
         if(test->m_moves.size())
