@@ -39,7 +39,6 @@ void game::save(char play_col, int gamemode, int ia_lvl)
     for(int i=0; i<BOARD_SIZE; i++)
         for(int j=0; j<BOARD_SIZE; j++)
         {
-            cout << m_board[i][j];
             myfile.put(m_board[i][j]) ;
             myfile << " ";
         }

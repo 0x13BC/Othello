@@ -7,7 +7,7 @@ situation::situation()
 situation::situation(vector< vector <char> > board, char col, int depth, int x, int y)
     :game(board), m_col(col), m_depth(depth), m_x(x), m_y(y)
 {
-    vector <int> buff1= {500,-150, 30,10,10,30,-150, 500}; //source de la table d'heuristique: Université de Valenciennes
+   /* vector <int> buff1= {500,-150, 30,10,10,30,-150, 500}; //source de la table d'heuristique: Université de Valenciennes
     m_heuristique.push_back(buff1);
     vector <int> buff2= {-150, -250, 0,0,0,0,-250,-150};
     m_heuristique.push_back(buff2);
@@ -18,7 +18,7 @@ situation::situation(vector< vector <char> > board, char col, int depth, int x, 
     m_heuristique.push_back(buff4);
     m_heuristique.push_back(buff3);
     m_heuristique.push_back(buff2);
-    m_heuristique.push_back(buff1);
+    m_heuristique.push_back(buff1);*/
 
 
 
@@ -65,7 +65,7 @@ int situation::is_end()
 int situation::heuristique(char col)
 {
 
-    get_moves();
+    //get_moves();
     int value=0;
     int val_cases=0;
     int pions_joues=0;
@@ -79,7 +79,7 @@ int situation::heuristique(char col)
                 if(m_board[i][j]==col)
                 {
                     pions_col++;
-                    val_cases+=m_heuristique[i][j];
+                    //val_cases+=m_heuristique[i][j];
                 }
             }
         }
@@ -105,10 +105,11 @@ vector <int> situation::assess(char ia_col, int affichage)
 {
     vector <int> result= {0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)};
     vector <int> buff;
-    get_all_successors();
+
     Console* screen= screen->getInstance();
     if (m_depth!=SEARCH_DEPTH)
     {
+         get_all_successors();
         if(m_succesors.size())
         {
         for (unsigned int i=0; i<m_succesors.size(); i++)
