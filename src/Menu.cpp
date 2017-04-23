@@ -1,5 +1,7 @@
 #include "../lib/menu.h"
 #include "../lib/situation.h"
+#include "../lib/JvsJ.h"
+
 #include <windows.h>
 void menu ()
 {
@@ -12,8 +14,9 @@ cout<<"MENU"<<endl;
 cout<<endl;
 cout<<"1-Jouer contre l'IA"<<endl;
 cout<<"2-Jouer contre un autre joueur"<<endl;
-cout<<"3-Regle du jeu"<<endl;
-cout<<"4-Quitter"<<endl;
+cout<<"3-Charger une partie"<<endl;
+cout<<"4-Regle du jeu"<<endl;
+cout<<"5-Quitter"<<endl;
 int a;
     cin>>a;
 switch (a)
@@ -21,29 +24,33 @@ switch (a)
 case 1:
     ///faire un autre menu avec tous les autres paramètres des IA.
     system("cls");
-    menuDifficulte();
+    menuAide();
     system("cls");
     menuTypeIA();
     break;
 case 2:
     ///lancer le jeu J vs J
+    JvsJ();
     system("cls");
-    menuDifficulte();
+    menuAide();
     break;
 case 3:
-    ///lancer les règle s'affiche.
+    ///lancer le jeu sauvegardé
     system("cls");
     break;
 case 4:
+    ///Afficher les règles
+    break;
+case 5:
     fin =0;
     break;
 default:
-    {
+    system("cls");
+    break;
 
-    }
 }
-}
-}
+}}
+
 
 void menuTypeIA()
 {
@@ -68,11 +75,11 @@ void menuTypeIA()
     }
 }
 
-void menuDifficulte() ///bonus
+void menuAide() ///bonus
 {
-    cout<<"Quel type de difficulter voulez vous?"<<endl<<endl;
-    cout<<"1-facile"<<endl;
-    cout<<"2-normal"<<endl;
+    cout<<"QVoulez vous activer l'aide ?"<<endl<<endl;
+    cout<<"1-Oui"<<endl;
+    cout<<"2-Non"<<endl;
     int a;
     cin>>a;
     switch(a)

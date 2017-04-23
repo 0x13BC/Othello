@@ -166,8 +166,10 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
     return ret_val;
 
 }
-int game::Getwin(IA* ia)
+int game::Getwin()
 {
+    IA* ia=NULL;
+
     int test=1;
     int countb=0, countw=0, counte=0;
     int buff;

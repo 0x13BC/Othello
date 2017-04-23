@@ -141,12 +141,12 @@
 1492883222 c:\users\david\documents\prjct-v1\lib\console.h
 	<iostream>
 
-1492929567 source:c:\users\david\documents\prjct-v1\src\game.cpp
+1492945238 source:c:\users\david\documents\prjct-v1\src\game.cpp
 	"../lib/game.h"
 	<stdlib.h>
 	<windows.h>
 
-1492929567 c:\users\david\documents\prjct-v1\lib\game.h
+1492945075 c:\users\david\documents\prjct-v1\lib\game.h
 	"ia.h"
 
 1492929567 c:\users\david\documents\prjct-v1\lib\ia.h
@@ -165,7 +165,7 @@
 1492929567 c:\users\david\documents\prjct-v1\lib\situation.h
 	"game.h"
 
-1492940266 source:c:\users\david\documents\prjct-v1\src\main.cpp
+1492945612 source:c:\users\david\documents\prjct-v1\src\main.cpp
 	"../lib/deplacement.h"
 	"../lib/menu.h"
 	<windows.h>
@@ -185,10 +185,17 @@
 1492929567 source:c:\users\david\documents\prjct-v1\src\time.cpp
 	"../lib/time.hpp"
 
-1492941366 source:c:\users\david\documents\prjct-v1\src\menu.cpp
+1492944744 source:c:\users\david\documents\prjct-v1\src\menu.cpp
 	"../lib/menu.h"
 	"../lib/situation.h"
+	"../lib/JvsJ.h"
 	<windows.h>
 
-1492941317 c:\users\david\documents\prjct-v1\lib\menu.h
+1492944340 c:\users\david\documents\prjct-v1\lib\menu.h
+
+1492946912 source:c:\users\david\documents\prjct-v1\src\jvsj.cpp
+	<windows.h>
+	"../lib/deplacement.h"
+
+1492942803 c:\users\david\documents\prjct-v1\lib\jvsj.h
 

@@ -14,7 +14,7 @@ class game{
         //PUBLIC METHODS
         vector <vector <int> >  valid_move(int x, int y, char col); ///Fonction vérifiant que le mouvement est autorisé et retournant l'ensemble des cases a retourner
         int Place(int x, int y, char col); ///
-        int Getwin(IA* ia=NULL);
+        int Getwin();
         void display(int x=0, int y=0);
         vector <vector <char> > m_board;
     protected:

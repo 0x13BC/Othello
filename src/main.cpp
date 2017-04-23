@@ -7,7 +7,7 @@
 int main()
 {
 menu();
- /*   game jeu;
+    game jeu;
     jeu.display();
     IA joueur2;
     Joueur J1('b');
@@ -34,7 +34,7 @@ menu();
         }
 
         jeu.display();
-        jeu.Getwin(&joueur2);
+        jeu.Getwin();
         test->m_col=joueur2.m_col;
         test->get_moves();
         if(test->m_moves.size())
@@ -60,5 +60,5 @@ menu();
 
     jeu.display();
     return 0;
-*/
+
 }

@@ -2,7 +2,7 @@
 #define MENU_H_INCLUDED
 
 void menu();
-void menuDifficulte();
+void menuAide();
 void menuTypeIA();
 
 
