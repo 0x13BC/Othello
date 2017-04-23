@@ -1,6 +1,7 @@
 
-#include<windows.h>
+
  #include "../lib/deplacement.h"
+ #include<windows.h>
 int JvsJ(vector< vector <char> > board, char col_start)
 {
     game* buffin= (board.size()? new game(board):new game());
