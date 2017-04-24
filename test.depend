@@ -66,7 +66,7 @@
 1492994771 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\ia.cpp
 	"../lib/situation.h"
 
-1492998266 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\ia.h
+1493004497 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\ia.h
 	<iostream>
 	<vector>
 	<string>
@@ -80,7 +80,7 @@
 	"../lib/menu.h"
 	<windows.h>
 
-1492998286 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\game.h
+1493006778 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\game.h
 	"ia.h"
 
 1493000420 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\game.cpp
@@ -292,17 +292,17 @@
 
 1492989641 c:\users\gerondeau\documents\prjct-2-ing2-v1\lib\jvsj.h
 
-1492998266 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\situation.h
+1493006641 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\situation.h
 	"game.h"
 
-1492910714 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\time.hpp
+1493004660 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\time.hpp
 	<iostream>
 	<ctime>
 
-1492972483 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\deplacement.h
+1493003780 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\deplacement.h
 	"../lib/situation.h"
 
-1492972483 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\menu.h
+1493006582 c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\lib\menu.h
 
 1492994771 source:c:\users\paul\documents\ing2.2\informatique\théorie des graphes\projet\othello\src\menu.cpp
 	"../lib/menu.h"

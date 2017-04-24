@@ -1,7 +1,12 @@
-
+/**
+ *@file JvsJ.cpp
+ *@brief Cpp des fonctions de jeu
+*/
 
  #include "../lib/deplacement.h"
  #include<windows.h>
+
+ ///@brief Joueur contre joueur.
 int JvsJ(vector< vector <char> > board, char col_start)
 {
 
@@ -68,7 +73,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
 }
  }
 
-
+///@brief Joueur contre IA.
  int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col, int affichage)
  {
 
