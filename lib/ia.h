@@ -18,7 +18,7 @@ using namespace std;
 class IA
 /**
  *@brief Classe IA (Intelligence) Coeur de L'IA.
- *-Possède les solution du plateau de jeu.
+ *-Possede les solution du plateau de jeu.
  *-Jouer.
 */
 {
