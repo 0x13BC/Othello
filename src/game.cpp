@@ -1,6 +1,13 @@
+/**
+ *@file game.cpp
+ *@brief Cpp de la classe game
+*/
+
 #include "../lib/game.h"
 #include <stdlib.h>
 #include <windows.h>
+
+/// @brief constructeur par défaut
 game::game()
 {
     vector<char> buff;
@@ -27,6 +34,7 @@ game::~game()
     //dtor
 }
 
+///@brief SAuvegarde le plateau de jeu ainsi que le mode de jeu.
 void game::save(char play_col, int gamemode, int ia_lvl)
 {
     ofstream myfile;
@@ -67,11 +75,14 @@ char game::get_symbol(char input)
     }
     return 0;
 }
+/// @brief Affichage du plateau.
 void game::display(int x, int y)
 {
     if(x==0 && y==0) system("cls");
     Console* ecran;
     ecran= Console::getInstance();
+
+    ///Affichage des symboles.
         ecran->setColor(COLOR_DEFAULT);
     for(int i=0; i<BOARD_SIZE; i++)
         for(int j=0; j<BOARD_SIZE; j++)
@@ -90,7 +101,7 @@ void game::display(int x, int y)
             //std::cout<<"\xBA";
 
 
-
+///Affichage des numeros de cases.
 
     for(int i=0; i<BOARD_SIZE; i++)
     {
@@ -101,7 +112,7 @@ void game::display(int x, int y)
         line++;
     }
 
-
+///Affichage de la grille.
 
     for(int i=0; i<=BOARD_SIZE; i++)
     for(int j=0; j<(BOARD_SIZE*4)-1; j++)
@@ -130,10 +141,11 @@ void game::display(int x, int y)
 
 }
 
+/// @brief Place un pion dans une case
 int game::Place(int x, int y, char col)
 {
 
-    vector <vector <int> > direction=valid_move(x,y,col);
+    vector <vector <int> > direction=valid_move(x,y,col);/// Verifie si la case est un mouvement valide.
     if (!direction.empty())
     {
         for(unsigned int i=0; i<direction.size(); i++)
@@ -144,6 +156,8 @@ int game::Place(int x, int y, char col)
     }
     else return 1;
 }
+
+/// @brief Permet de deplacer les coordonnees en fonction d'une direction.
 void game::deplacement(int* x, int* y, int direction)
 {
     switch (direction)
@@ -178,6 +192,8 @@ void game::deplacement(int* x, int* y, int direction)
         break;
     }
 }
+
+/// @brief Verifie si le mouvement est valide.
 vector <vector <int> > game::valid_move(int x,int y, char col)
 {
     int direction=-4;
