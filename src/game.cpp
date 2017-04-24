@@ -71,6 +71,15 @@ void game::display(int x, int y)
 {
     Console* ecran;
     ecran= Console::getInstance();
+    for(int i=0; i<BOARD_SIZE; i++)
+        for(int j=0; j<BOARD_SIZE; j++)
+        {
+            ecran->gotoLigCol(2+x+2*i, 3+y+4*j);
+            //switch(m_board[i][j])
+            //ecran->setColor(COLOR_GREEN);
+            cout << get_symbol(m_board[i][j]);
+        }
+        ecran->setColor(COLOR_DEFAULT);
     ecran->setColor(COLOR_GREEN);
     int line=1;
     char Column='A';
@@ -113,15 +122,7 @@ void game::display(int x, int y)
     }
     ecran->setColor(COLOR_DEFAULT);
 
-    for(int i=0; i<BOARD_SIZE; i++)
-        for(int j=0; j<BOARD_SIZE; j++)
-        {
-            ecran->gotoLigCol(2+x+2*i, 3+y+4*j);
-            //switch(m_board[i][j])
-            //ecran->setColor(COLOR_GREEN);
-            cout << get_symbol(m_board[i][j]);
-        }
-        ecran->setColor(COLOR_DEFAULT);
+
 }
 
 int game::Place(int x, int y, char col)
