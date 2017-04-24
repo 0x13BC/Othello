@@ -96,7 +96,7 @@ int situation::heuristique(char col)
     return value; //retourne l'heuristique
 }
 vector <int> situation::assess0(char ia_col)
-///@brief ALgorithme aleatoire
+///@brief Algorithme aleatoire
 {
     get_all_successors(); //récupère les successeurs
     vector<int> result;
