@@ -196,6 +196,7 @@ void game::deplacement(int* x, int* y, int direction)
 /// @brief Verifie si le mouvement est valide.
 vector <vector <int> > game::valid_move(int x,int y, char col)
 {
+    /// Direction
     int direction=-4;
     int base_include=0;
     int buffx= x;
@@ -263,6 +264,8 @@ vector <vector <int> > game::valid_move(int x,int y, char col)
     return ret_val;
 
 }
+
+///@brief Permet de compter le nombre de case vide ainsi que le nombre de pion de couleur.
 int game::Getwin()
 {
 

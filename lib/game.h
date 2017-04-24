@@ -25,7 +25,8 @@ class game{
         int Getwin();/// Compte les cases vides et les pions. Permet de définir une victoire.
         void save(char play_col, int gamemode=0, int ia_lvl=0 );/// Sauvegarde la partie.
         void display(int x=0, int y=0);///Affiche le plateau.
-        vector <vector <char> > m_board; /// Plateau de jeu.
+        /// Plateau de jeu.
+        vector <vector <char> > m_board;
         char get_symbol(char input); /// Permet d'afficher un symbole ASCII.
     protected:
 
