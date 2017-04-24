@@ -70,6 +70,7 @@ char game::get_symbol(char input)
 void game::display(int x, int y)
 {
     Console* ecran;
+    ecran= Console::getInstance();
     ecran->setColor(COLOR_GREEN);
     int line=1;
     char Column='A';
@@ -77,7 +78,7 @@ void game::display(int x, int y)
             //for(int k=0; k<=8; k++)std::cout<<"\xC4";
             //std::cout<<"\xBA";
 
-    ecran= Console::getInstance();
+
     if(x==0 && y==0) system("cls");
 
     for(int i=0; i<BOARD_SIZE; i++)

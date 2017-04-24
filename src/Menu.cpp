@@ -46,12 +46,20 @@ case 3:
     ///lancer le jeu sauvegardé
     {
     cout << "Quel est le nom de votre partie? (sans extension)" << endl;
-    cin >> input;
     ifstream file;
+
+    cin >> input;
+    file.open(input+".txt");
+    if(!file.isopen())
+    {
+        cout << "Ce fichier n'existe pas";
+        Sleep(300);
+    }
+    else
+        {
     char in;
     int mode;
     char player_turn;
-    file.open(input+".txt");
       for(int i=0; i<8; i++)
       {
           buff.clear();
@@ -78,7 +86,7 @@ case 3:
             JvsIA(load_board, mode, player_turn, affichage);
         }
     file.close();
-
+        }
 
 
 

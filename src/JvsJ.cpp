@@ -10,13 +10,14 @@ int JvsJ(vector< vector <char> > board, char col_start)
     int x=0, y=0;
     Joueur J1(col_start);
     Joueur J2((col_start=='b'? 'w':'b'));
-    int test=(col_start=='b'? 1:0);
+    int test1=(col_start=='b'? 1:0);
     while (1)
     {
-        if(test)
-        {
+
         situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
+        if(test1)
+        {
         if(test->m_moves.size())
         {
         do
@@ -36,7 +37,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
             system("pause");
         }
         }
-        test=1;
+        test1=1;
         jeu.display();
         if(jeu.Getwin()) return 0;
 
@@ -74,16 +75,17 @@ int JvsJ(vector< vector <char> > board, char col_start)
     jeu.display();
     Joueur J1(play_col);
     IA joueur2((play_col=='b' ? 'w': 'b'));
-    int test=(play_col=='b' ? 1:0);
+    int test1=(play_col=='b' ? 1:0);
 
     vector <int> buff;
     int x=0, y=0;
     class time timer;
     while (1)
     {
-        if(test)
-        {
         situation* test= new situation(jeu.m_board, J1.getcol());
+        if(test1)
+        {
+
         test->get_moves();
         if(test->m_moves.size())
         {
@@ -100,7 +102,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
             system("pause");
         }
         }
-        test=1;
+        test1=1;
         jeu.display();
         if(jeu.Getwin()) return 0;
         test->m_col=joueur2.m_col;

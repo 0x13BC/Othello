@@ -160,15 +160,16 @@ vector <int> situation::assess(char ia_col, int affichage)
 }
 
 vector <int> situation::assess2(char ia_col, int affichage)
+///@brief Algorithme NegaMax
 {
-    vector <int> result= {0,0, MIN_HEURISTIC};
+    vector <int> result= {0,0, MIN_HEURISTIC}; //vector de résultat
     vector <int> buff;
 
-    Console* screen= screen->getInstance();
-    if (m_depth!=SEARCH_DEPTH)
+    Console* screen= screen->getInstance(); //console pour l'affichage
+    if (m_depth!=SEARCH_DEPTH) //si il faut encore descendre en profondeur
     {
-        get_all_successors();
-        if(m_succesors.size())
+        get_all_successors(); //récupère tous les successeurs
+        if(m_succesors.size()) //si il y a des successeurs
         {
         for (unsigned int i=0; i<m_succesors.size(); i++)
         {
@@ -198,22 +199,22 @@ vector <int> situation::assess2(char ia_col, int affichage)
 }
 
 void situation::get_all_successors()
+///@brief Récupere tous les successeurs possibles de la situation
 {
     vector < vector <char> > board_save=m_board;
-    if(is_end()) /*do nothing */;
+    if(is_end()) /*do nothing */; //vérifie que la sitution n'est pas une situation morte et récupère tous les mouvements possibles
     else
     {
         for(unsigned int i=0; i<m_moves.size(); i++)
         {
-            m_board=board_save;
+            m_board=board_save; //réinitialize le tableau de la situation
             for (unsigned int j=0; j<m_moves[i].size(); j++)
             {
-                Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
+                Place(m_moves[i][j][0], m_moves[i][j][1], m_col); //Place les pions sur le plateau de la situation
             }
 
 
-            m_succesors.push_back(new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]));
-            m_board=board_save;
+            m_succesors.push_back(new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1])); //crée une nouvelle situation
         }
     }
 }
@@ -228,101 +229,100 @@ vector <int> situation::assess3(char ia_col, int al, int be, int affichage)
     int beta= be;
     situation* buffer=NULL;
 
-    vector < vector <char> > board_save=m_board;
+    vector < vector <char> > board_save=m_board; //buffer de plateau
 
-    Console* screen= screen->getInstance();
+    Console* screen= screen->getInstance(); //console pour l'affichage
 
-    if (m_depth!=SEARCH_DEPTH)
+    if (m_depth!=SEARCH_DEPTH) //si on dois encore plonger plus profond dans l'arbre
     {
-        get_moves();
-        if(m_moves.size())
+        get_moves(); // génère les mouvements possibles
+        if(m_moves.size()) //Si il y a des successeurs
         {
-        for(unsigned int i=0; i<m_moves.size(); i++)
+        for(unsigned int i=0; i<m_moves.size(); i++) //pour chaque mouvement possible dans la situation
         {
 
 
-            if(ia_col != m_col)
+            if(ia_col != m_col) //cas où c'est un noeud Min
             {
 
-                if(result[2]>alpha)
+                if(result[2]>alpha) // si le noeud Max dont il est issu peut prendre en compte la valeur
                 {
 
                     for (unsigned int j=0; j<m_moves[i].size(); j++)
                     {
-                        Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
+                        Place(m_moves[i][j][0], m_moves[i][j][1], m_col); //place les pions du mouvement i
                     }
 
 
-                    buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);
+                    buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]); //génère une situation
 
-                    if(affichage) buffer->display(0,(buffer->m_depth)*SPACE_DISPLAY);
-                    m_board=board_save;
+                    if(affichage) buffer->display(0,(buffer->m_depth)*SPACE_DISPLAY); //affiche la simulation si c'est demandé
+                    m_board=board_save; //réinitialisation du tableau de la situation actuelle
 
-                    buff=buffer->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2]), beta, affichage);
+                    buff=buffer->assess3(ia_col,(result[2]==MAX_HEURISTIC-1 ? MIN_HEURISTIC: result[2])/*détermine la valeur de alpha a passer */, beta, affichage); //recursion
 
-                    if(result[2] >= buff[2])
+                    if(result[2] >= buff[2]) //choisis le plus petit résultat
                     {
                         result=buff;
                     }
                 }
-                //else system("pause");
             }
-            else
+            else //Cas d'un noeud max
             {
 
-                if(result[2]<beta)
+                if(result[2]<beta) //Si le noeud min dont il est issu peut accepter la valeur
                 {
                     for (unsigned int j=0; j<m_moves[i].size(); j++)
                     {
-                        Place(m_moves[i][j][0], m_moves[i][j][1], m_col);
+                        Place(m_moves[i][j][0], m_moves[i][j][1], m_col); //place les pions du mouvement i
                     }
 
-                    buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);
-                    if(affichage)buffer->display(0,(buffer->m_depth)*SPACE_DISPLAY);
+                    buffer=new situation(m_board, (m_col== 'w' ? 'b' : 'w'), m_depth+1, m_moves[i][0][0], m_moves[i][0][1]);// génère la situation suivante
+                    if(affichage)buffer->display(0,(buffer->m_depth)*SPACE_DISPLAY); //affiche si c'est requis
 
 
-                    m_board=board_save;
-                    buff=buffer->assess3(ia_col,alpha, (result[2]==MIN_HEURISTIC+1? MAX_HEURISTIC: result[2]), affichage);
+                    m_board=board_save; //réinitialise la situation actuelle
+                    buff=buffer->assess3(ia_col,alpha, (result[2]==MIN_HEURISTIC+1? MAX_HEURISTIC: result[2]), affichage); // récursion
 
-                    if(result[2] <= buff[2])
+                    if(result[2] <= buff[2]) //choisis la valeur maximale
                     {
 
                         result=buff;
 
                     }
                 }
-                //else system("pause");
             }
 
 
-            if(m_depth!=0) result= {m_x,m_y,result[2]};
-            if(buffer)
+            if(m_depth!=0) result= {m_x,m_y,result[2]}; //remonte les coordonées du coup et la valeur
+            if(buffer) //détruits la situation utilisée
             {
                 delete buffer;
                 buffer=NULL;
             }
         }
         }
-        else result={m_x,m_y,heuristique(ia_col)};
+        else result={m_x,m_y,heuristique(ia_col)}; //Si il n'y a plus de successeurs on remonte l'heuristique
     }
-    else
+    else //Si on a atteint la profondeur demandée
     {
-        result= {m_x,m_y,heuristique(ia_col)};
-        delete_successors();
-        return result;
+        result= {m_x,m_y,heuristique(ia_col)}; //On retourne l'heuristique demandée
+        screen->deleteInstance(); //on libère l'écran
+        return result; // et renvoie le résultat
 
     }
-    screen->deleteInstance();
-    delete_successors();
-    return result;
+    screen->deleteInstance();//on libère l'écran
+
+    return result;// et renvoie le résultat
 }
 
 void situation::delete_successors()
+///@brief libère la mémoire prise par les successeurs
 {
     for (unsigned int i=0; i<m_succesors.size(); i++) {if(m_succesors[i])
     {
-        delete(m_succesors[i]);
-        m_succesors[i]=NULL;
+        delete(m_succesors[i]); //libère la mémoire
+        m_succesors[i]=NULL; //met a NULL
     }
     }
 }
