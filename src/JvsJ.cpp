@@ -4,7 +4,7 @@
  #include<windows.h>
 int JvsJ(vector< vector <char> > board, char col_start)
 {
-    game* buffin= (board.size()? new game(board):new game());
+    game* buffin= (board.size()>1? new game(board):new game());
     game jeu(buffin);
   //  vector <int> buff;
     int x=0, y=0;
