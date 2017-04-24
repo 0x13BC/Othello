@@ -293,7 +293,7 @@ int game::Getwin()
             countb+=counte;
 
             cout << "Black " << get_symbol('b') << " wins " << countb << " to " << countw << endl << "Congratulations!";
-            Sleep(300);
+            Sleep(2000);
             system("cls");
             return 1;
         }
@@ -302,7 +302,7 @@ int game::Getwin()
             countw+=counte;
 
             cout << "White " << get_symbol('w') << " wins " << countw << " to " << countb << endl << "Congratulations!";
-            Sleep(300);
+            Sleep(2000);
             system("cls");
             return 1;
         }
