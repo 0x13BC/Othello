@@ -1,7 +1,10 @@
 #include "../lib/situation.h"
 #include <windows.h>
 
-const vector < vector <int> > m_heuristique={
+const vector < vector <int> >
+///variable globale pour la table des valeurs strategiques des cases
+m_heuristique=
+{
     {500,-150, 30,10,10,30,-150, 500},
     {-150, -250, 0,0,0,0,-250,-150},
     {30,0,1,2,2,1,0,30},
@@ -11,27 +14,11 @@ const vector < vector <int> > m_heuristique={
     {-150, -250, 0,0,0,0,-250,-150},
     {500,-150, 30,10,10,30,-150, 500}
 };
-situation::situation()
-{
-    //ctor
-}
+
 situation::situation(vector< vector <char> > board, char col, int depth, int x, int y)
+///@brief Constructeur surcharge
     :game(board), m_col(col), m_depth(depth), m_x(x), m_y(y)
 {
-    /*vector <int> buff1= {500,-150, 30,10,10,30,-150, 500}; //source de la table d'heuristique: Université de Valenciennes
-    m_heuristique.push_back(buff1);
-    vector <int> buff2= {-150, -250, 0,0,0,0,-250,-150};
-    m_heuristique.push_back(buff2);
-    vector <int> buff3= {30,0,1,2,2,1,0,30};
-    m_heuristique.push_back(buff3);
-    vector <int> buff4= {10,0,2,16,16,2,0,10};
-    m_heuristique.push_back(buff4);
-    m_heuristique.push_back(buff4);
-    m_heuristique.push_back(buff3);
-    m_heuristique.push_back(buff2);
-    m_heuristique.push_back(buff1);*/
-
-
 
 }
 situation::~situation()
@@ -40,6 +27,7 @@ situation::~situation()
 }
 
 void situation::get_moves()
+///@brief recupere l'ensemble des mouvs posssibles pour la situation
 {
     m_moves.clear();
     vector < vector <int> > buff;
@@ -63,8 +51,9 @@ void situation::get_moves()
 }
 
 int situation::is_end()
+/// @brief verifie si la situation est de fin
 {
-    get_moves();
+    get_moves(); // récupère les mouvs
     if(!m_moves.size())
     {
         return 1;
@@ -74,89 +63,93 @@ int situation::is_end()
 
 
 int situation::heuristique(char col)
+/// @brief Fonction d'heuristique
 {
 
-    get_moves();
+    get_moves(); //récupère les mouvements possibles
+    //Variables locales
     int value=0;
     int val_cases=0;
     int pions_joues=0;
     int pions_col=0;
+
     for(int i=0; i<8; i++)
         for(int j=0; j<8; j++)
         {
-            if(m_board[i][j]!='e')
+            if(m_board[i][j]!='e') //si la case est pleine
             {
-                pions_joues++;
-                if(m_board[i][j]==col)
+                pions_joues++; //augmente le nombre de pions en jeu
+                if(m_board[i][j]==col) //si c'est la couleur demandée
                 {
-                    pions_col++;
-                    val_cases+=m_heuristique[i][j];
+                    pions_col++; //augmente les pions
+                    val_cases+=m_heuristique[i][j]; //ajoute la valeur de la case
                 }
             }
         }
-    if(pions_joues>=50)
+    if(pions_joues>=50) //Fin de partie
         value= 90*pions_col + 10*m_moves.size() + 20 * val_cases;
-    else if(pions_joues >=20)
+    else if(pions_joues >=20) //milieu de partie
         value= 10*pions_col + 20*m_moves.size() + 90 * val_cases;
-    else value= 10*pions_col + 80*m_moves.size() + 30*val_cases;
+    else //début de partie
+        value= 10*pions_col + 80*m_moves.size() + 30*val_cases;
 
-    return value;
+    return value; //retourne l'heuristique
 }
 vector <int> situation::assess0(char ia_col)
+///@brief ALgorithme aleatoire
 {
-    get_all_successors();
+    get_all_successors(); //récupère les successeurs
     vector<int> result;
-    srand(time(NULL));
-    int i=rand() % m_succesors.size();
+    srand(time(NULL)); //initialise l'aléa
+    int i=rand() % m_succesors.size(); //choisi un successeur au hasard
     result= {m_succesors[i]->m_x, m_succesors[i]->m_y};
-    delete_successors();
-    return result;
+    delete_successors(); //supprime les successeurs
+    return result; //retourne le résultat
 }
 vector <int> situation::assess(char ia_col, int affichage)
+///@brief Algorithme Min-Max
 {
-    vector <int> result= {0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)};
+    vector <int> result= {0,0,(ia_col==m_col? MIN_HEURISTIC : MAX_HEURISTIC)}; //initialisation différente selon qu'on cherhce un max ou un min
     vector <int> buff;
 
-    Console* screen= screen->getInstance();
-    if (m_depth!=SEARCH_DEPTH)
+    Console* screen= screen->getInstance(); //ecran
+    if (m_depth!=SEARCH_DEPTH) //Si on doi encore descendre dans l'arbre
     {
-         get_all_successors();
-        if(m_succesors.size())
+         get_all_successors(); //récupérer les successeurs
+        if(m_succesors.size()) //Si il y a des successeurs
         {
-        for (unsigned int i=0; i<m_succesors.size(); i++)
+        for (unsigned int i=0; i<m_succesors.size(); i++) //pour chaque successeur
         {
-            if(affichage) m_succesors[i]->display(0,(m_succesors[i]->m_depth)*SPACE_DISPLAY);
+            if(affichage) m_succesors[i]->display(0,(m_succesors[i]->m_depth)*SPACE_DISPLAY); //affichage si demandé
 
-            buff=m_succesors[i]->assess(ia_col, affichage);
-            if(ia_col == m_col)
+            buff=m_succesors[i]->assess(ia_col, affichage); //récursion
+            if(ia_col == m_col) //si noeud max
             {
-                if(result[2] <= buff[2])
+                if(result[2] <= buff[2]) //choisir le plus haut
                 {
                     result=buff;
                 }
             }
-            else if(result[2] >= buff[2])
+            else if(result[2] >= buff[2]) //si noeud min, choisir le plus petit
             {
                 result=buff;
 
             }
 
         }
-        if(m_depth!=0) result= {m_x,m_y,result[2]};
+        if(m_depth!=0) result= {m_x,m_y,result[2]}; //retourner les coordonées de jeu et la valeur heuristique
         }
-        else result={m_x,m_y,heuristique(ia_col)};
+        else result={m_x,m_y,heuristique(ia_col)}; // si il n'y a plus de successeurs retourner les coordonées et l'heuristique
     }
     else
     {
-        result= {m_x,m_y,heuristique(ia_col)};
-        screen->deleteInstance();
-        delete_successors();
-        return result;
+        result= {m_x,m_y,heuristique(ia_col)}; //retourner les coordonées et l'heuristique
+
 
     }
-    screen->deleteInstance();
-    delete_successors();
-    return result;
+    screen->deleteInstance(); //libérer l'écran
+        delete_successors(); //libère les successeurs
+        return result; //retourne le résultat
 }
 
 vector <int> situation::assess2(char ia_col, int affichage)
@@ -171,35 +164,33 @@ vector <int> situation::assess2(char ia_col, int affichage)
         get_all_successors(); //récupère tous les successeurs
         if(m_succesors.size()) //si il y a des successeurs
         {
-        for (unsigned int i=0; i<m_succesors.size(); i++)
+        for (unsigned int i=0; i<m_succesors.size(); i++) //pour chaque successeur
         {
-                if(affichage)m_succesors[i]->display(0,(m_succesors[i]->m_depth)*SPACE_DISPLAY);
+                if(affichage)m_succesors[i]->display(0,(m_succesors[i]->m_depth)*SPACE_DISPLAY); //afficher si il faut
 
-            buff=m_succesors[i]->assess2(ia_col, affichage);
-            if(result[2] <= buff[2])
+            buff=m_succesors[i]->assess2(ia_col, affichage); // récursion
+            if(result[2] <= buff[2]) //sélection du maximum
             {
                 result=buff;
             }
         }
-        if(m_depth!=0) result= {m_x,m_y,-result[2]};
+        if(m_depth!=0) result= {m_x,m_y,-result[2]}; //retourne l'opposé de l'heuristique
         }
-        else result={m_x,m_y,-heuristique(ia_col)};
+        else result={m_x,m_y,-heuristique(ia_col)}; // si il n'ya plus de coups possibles retourne l'opposé de l'heuristique
     }
     else
     {
-        result= {m_x,m_y,-heuristique(ia_col)};
-        screen->deleteInstance();
-        delete_successors();
-        return result;
+        result= {m_x,m_y,-heuristique(ia_col)}; //retourne l'opposé de l'heuristique
+
 
     }
-    screen->deleteInstance();
-    delete_successors();
-    return result;
+   screen->deleteInstance(); //libère l'écran
+        delete_successors(); //libère les succeseurs
+        return result; // retourne le résultat
 }
 
 void situation::get_all_successors()
-///@brief Récupere tous les successeurs possibles de la situation
+///@brief Recupere tous les successeurs possibles de la situation
 {
     vector < vector <char> > board_save=m_board;
     if(is_end()) /*do nothing */; //vérifie que la sitution n'est pas une situation morte et récupère tous les mouvements possibles
@@ -317,7 +308,7 @@ vector <int> situation::assess3(char ia_col, int al, int be, int affichage)
 }
 
 void situation::delete_successors()
-///@brief libère la mémoire prise par les successeurs
+///@brief libere la memoire prise par les successeurs
 {
     for (unsigned int i=0; i<m_succesors.size(); i++) {if(m_succesors[i])
     {

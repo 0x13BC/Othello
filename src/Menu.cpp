@@ -40,7 +40,6 @@ case 2:
     ///lancer le jeu J vs J
     JvsJ();
     system("cls");
-    menuAide();
     break;
 case 3:
     ///lancer le jeu sauvegardé
@@ -135,24 +134,4 @@ int menuTypeIA()
     return a;
 }
 
-void menuAide() ///bonus
-{
-    cout<<"QVoulez vous activer l'aide ?"<<endl<<endl;
-    cout<<"1-Oui"<<endl;
-    cout<<"2-Non"<<endl;
-    int a;
-    cin>>a;
-    switch(a)
-    {
-case 1:
-    ///implémenter le jeu en voyant les cases ou le joueur peut jouer
-    system("cls");
-    break;
-case 2:
-    ///implémenter le jeu sans que je joueur voit les cases ou il peut jouer
-    system("cls");
-    break;
 
-    }
-
-}
