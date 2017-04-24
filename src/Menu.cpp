@@ -99,6 +99,14 @@ case 3:
     break;
 case 4:
     ///Afficher les règles
+    system("cls");
+    cout<<"Les regles"<<endl<<endl;
+    cout<<"Pour ce deplacer il faut utiliser les touches z,q,s et d."<<endl;
+    cout<<"Pour sauvegarder et quitter une partie il faut appuyer sur r."<<endl;
+    cout<<"Le joueur ayant les jetons noirs commence"<<endl;
+    cout<<"Le gagnant d'une partie est la personnes ayant le plus de jetons de sa couleur sur le plateau"<<endl<<endl;
+    Sleep(2000);
+    system("cls");
     break;
 case 5:
     /// fin du jeu

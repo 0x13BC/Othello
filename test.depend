@@ -151,63 +151,66 @@
 1492883222 c:\users\david\documents\prjct-v1\lib\console.h
 	<iostream>
 
-1492945238 source:c:\users\david\documents\prjct-v1\src\game.cpp
+1493009087 source:c:\users\david\documents\prjct-v1\src\game.cpp
 	"../lib/game.h"
 	<stdlib.h>
 	<windows.h>
 
-1492945075 c:\users\david\documents\prjct-v1\lib\game.h
+1492993920 c:\users\david\documents\prjct-v1\lib\game.h
 	"ia.h"
 
-1492929567 c:\users\david\documents\prjct-v1\lib\ia.h
+1493001821 c:\users\david\documents\prjct-v1\lib\ia.h
 	<iostream>
 	<vector>
-	"./console.h"
+	<string>
+	<iostream>
+	<fstream>
+	"console.h"
 	"time.hpp"
 
 1492929567 c:\users\david\documents\prjct-v1\lib\time.hpp
 	<iostream>
 	<ctime>
 
-1492929567 source:c:\users\david\documents\prjct-v1\src\ia.cpp
+1492993920 source:c:\users\david\documents\prjct-v1\src\ia.cpp
 	"../lib/situation.h"
 
-1492929567 c:\users\david\documents\prjct-v1\lib\situation.h
+1493000800 c:\users\david\documents\prjct-v1\lib\situation.h
 	"game.h"
 
-1492945612 source:c:\users\david\documents\prjct-v1\src\main.cpp
+1492993920 source:c:\users\david\documents\prjct-v1\src\main.cpp
 	"../lib/deplacement.h"
 	"../lib/menu.h"
 	<windows.h>
 
-1492929567 c:\users\david\documents\prjct-v1\lib\deplacement.h
+1492993920 c:\users\david\documents\prjct-v1\lib\deplacement.h
 	"../lib/situation.h"
 
-1492929567 source:c:\users\david\documents\prjct-v1\src\situation.cpp
+1493004280 source:c:\users\david\documents\prjct-v1\src\situation.cpp
 	"../lib/situation.h"
 	<windows.h>
 
-1492929567 source:c:\users\david\documents\prjct-v1\src\deplacement.cpp
+1493000800 source:c:\users\david\documents\prjct-v1\src\deplacement.cpp
 	"../lib/deplacement.h"
 	<stdlib.h>
 	<windows.h>
 
-1492929567 source:c:\users\david\documents\prjct-v1\src\time.cpp
+1492993920 source:c:\users\david\documents\prjct-v1\src\time.cpp
 	"../lib/time.hpp"
 
-1492944744 source:c:\users\david\documents\prjct-v1\src\menu.cpp
+1493004967 source:c:\users\david\documents\prjct-v1\src\menu.cpp
 	"../lib/menu.h"
 	"../lib/situation.h"
 	"../lib/JvsJ.h"
 	<windows.h>
 
-1492944340 c:\users\david\documents\prjct-v1\lib\menu.h
+1492993920 c:\users\david\documents\prjct-v1\lib\menu.h
 
-1492947581 source:c:\users\david\documents\prjct-v1\src\jvsj.cpp
-	<windows.h>
+1493004563 source:c:\users\david\documents\prjct-v1\src\jvsj.cpp
 	"../lib/deplacement.h"
+	<windows.h>
 
-1492942803 c:\users\david\documents\prjct-v1\lib\jvsj.h
+1493004642 c:\users\david\documents\prjct-v1\lib\jvsj.h
 
 1492956215 source:c:\users\user\documents\prjct-v1\src\console.cpp
 	"../lib/console.h"
