@@ -1,3 +1,8 @@
+/**
+ *@file Menu.cpp
+ *@brief Cpp des fonctions du menu
+*/
+
 #include "../lib/menu.h"
 #include "../lib/situation.h"
 #include "../lib/JvsJ.h"
@@ -104,6 +109,7 @@ case 4:
     system("cls");
     break;
 case 5:
+    /// fin du jeu
     fin =0;
     break;
 default:

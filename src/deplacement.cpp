@@ -1,3 +1,8 @@
+/**
+ *@file deplacement.cpp
+ *@brief Cpp de la classe Joueur
+*/
+
 #include "../lib/deplacement.h"
 #include <stdlib.h>
 #include <windows.h>
@@ -8,11 +13,12 @@ Joueur::Joueur(char col) : m_col(col), x(0), y(0)
 {
     //cstr surchargé
 }
-
+///@brief Obtenir la couleur du joueur
 char Joueur::getcol()
 {
     return m_col;
 }
+///@brief Permet au joueur de se deplacer
 int Joueur::deplacement(int* x, int* y, game* jeu, char play_col, int gamemode, int ia_lvl)
 {
     Console* truc = Console::getInstance();

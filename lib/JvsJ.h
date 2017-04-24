@@ -1,3 +1,10 @@
+/**
+ *@file JvsJ.h
+ *@brief Fonction de jeu
+ *-Lancer partie Jouer contre Joueur.
+ *-Lancer partie Jouer contre IA.
+*/
+
 #ifndef JVSJ_H_INCLUDED
 #define JVSJ_H_INCLUDED
 

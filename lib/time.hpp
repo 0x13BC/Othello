@@ -1,3 +1,4 @@
+
 #ifndef TIME_HPP
 #define TIME_HPP
 
@@ -7,6 +8,13 @@
 using namespace std;
 
 class time
+/**
+ *@brief Classe Time Permet d'utiliser un chronometre.
+ *-Marche du Chrono.
+ *-Pause du Chrono.
+ *-Arret du Chrono.
+*/
+
 {
     private:
         //ATTRIBUTS
@@ -22,10 +30,10 @@ class time
         time(const time& other);
 
         //METHODS
-        void start();
-        void stop();
-        float GetSec();
-        void pause();
+        void start();///Marche du Chrono.
+        void stop();/// Arret du Chrono.
+        float GetSec();/// Obtenir le temps en seconde.
+        void pause();/// Pause le Chronometre.
 
 
 };

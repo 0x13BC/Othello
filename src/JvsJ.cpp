@@ -1,9 +1,15 @@
-
+/**
+ *@file JvsJ.cpp
+ *@brief Cpp des fonctions de jeu
+*/
 
  #include "../lib/deplacement.h"
  #include<windows.h>
+
+ ///@brief Joueur contre joueur.
 int JvsJ(vector< vector <char> > board, char col_start)
 {
+
     game* buffin= (board.size()>1? new game(board):new game());
     game jeu(buffin);
   //  vector <int> buff;
@@ -13,9 +19,9 @@ int JvsJ(vector< vector <char> > board, char col_start)
     int test1=(col_start=='b'? 1:0);
     while (1)
     {
-
         situation* test= new situation(jeu.m_board, J1.getcol());
         test->get_moves();
+
         if(test1)
         {
         if(test->m_moves.size())
@@ -67,9 +73,10 @@ int JvsJ(vector< vector <char> > board, char col_start)
 }
  }
 
-
+///@brief Joueur contre IA.
  int JvsIA(vector< vector <char> > board, int ia_lvl, char play_col, int affichage)
  {
+
     game* buffin= (board.size()>1? new game(board):new game());
     game jeu(buffin);
     jeu.display();
