@@ -6,11 +6,11 @@
 #include <fstream>
 #include "console.h"
 #include "time.hpp"
-#define SEARCH_DEPTH 5
+#define SEARCH_DEPTH 3
 #define MIN_HEURISTIC -10000000
 #define MAX_HEURISTIC 1000000
 #define BOARD_SIZE 8
-#define SPACE_DISPLAY 25
+#define SPACE_DISPLAY 34
 using namespace std;
 
 class IA

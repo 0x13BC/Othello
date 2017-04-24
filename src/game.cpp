@@ -50,8 +50,9 @@ void game::save(char play_col, int gamemode, int ia_lvl)
                 myfile << ia_lvl;
         }
         myfile.close();
-        cout << "Partie enregistree! A bientot!";
+        cout << "Partie enregistree!";
         Sleep(300);
+        system("cls");
 }
 char game::get_symbol(char input)
 {
