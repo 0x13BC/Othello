@@ -1,9 +1,4 @@
-/**
- *@file ia.h
- *@brief Classe IA (Intelligence) Coeur de L'IA.
- *-Possède les solution du plateau de jeu.
- *-Jouer.
-*/
+
 
 
 #include <iostream>
@@ -21,6 +16,12 @@
 using namespace std;
 
 class IA
+/**
+ *@file ia.h
+ *@brief Classe IA (Intelligence) Coeur de L'IA.
+ *-Possède les solution du plateau de jeu.
+ *-Jouer.
+*/
 {
     public:
         IA(char col='w');

@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <windows.h>
 
-/// @brief constructeur par défaut
+/// @brief constructeur par defaut
 game::game()
 {
     vector<char> buff;
@@ -34,7 +34,7 @@ game::~game()
     //dtor
 }
 
-///@brief SAuvegarde le plateau de jeu ainsi que le mode de jeu.
+///@brief Sauvegarde le plateau de jeu ainsi que le mode de jeu.
 void game::save(char play_col, int gamemode, int ia_lvl)
 {
     ofstream myfile;
@@ -82,7 +82,7 @@ void game::display(int x, int y)
     Console* ecran;
     ecran= Console::getInstance();
 
-    ///Affichage des symboles.
+    ///1 Affichage des symboles.
         ecran->setColor(COLOR_DEFAULT);
     for(int i=0; i<BOARD_SIZE; i++)
         for(int j=0; j<BOARD_SIZE; j++)
@@ -101,7 +101,7 @@ void game::display(int x, int y)
             //std::cout<<"\xBA";
 
 
-///Affichage des numeros de cases.
+///2 Affichage des numeros de cases.
 
     for(int i=0; i<BOARD_SIZE; i++)
     {
@@ -112,7 +112,7 @@ void game::display(int x, int y)
         line++;
     }
 
-///Affichage de la grille.
+///3 Affichage de la grille.
 
     for(int i=0; i<=BOARD_SIZE; i++)
     for(int j=0; j<(BOARD_SIZE*4)-1; j++)

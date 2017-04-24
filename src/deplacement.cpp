@@ -18,7 +18,7 @@ char Joueur::getcol()
 {
     return m_col;
 }
-///@brief Permet au joueur de se déplacer
+///@brief Permet au joueur de se deplacer
 int Joueur::deplacement(int* x, int* y, game* jeu, char play_col, int gamemode, int ia_lvl)
 {
     Console* truc = Console::getInstance();

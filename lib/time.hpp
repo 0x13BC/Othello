@@ -1,10 +1,3 @@
-/**
- *@file time.h
- *@brief Classe Time Permet d'utiliser un chronomètre.
- *-Marche du Chrono.
- *-Pause du Chrono.
- *-Arret du Chrono.
-*/
 
 #ifndef TIME_HPP
 #define TIME_HPP
@@ -15,6 +8,13 @@
 using namespace std;
 
 class time
+/**
+ *@brief Classe Time Permet d'utiliser un chronometre.
+ *-Marche du Chrono.
+ *-Pause du Chrono.
+ *-Arret du Chrono.
+*/
+
 {
     private:
         //ATTRIBUTS

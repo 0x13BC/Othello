@@ -6,13 +6,13 @@ class situation : public game
     public:
         situation(vector < vector <char> > board, char col, int depth=0, int x=-1, int y=-1);
         virtual ~situation();
-        ///Couleur du joueur devant jouer à la situation
+        ///Couleur du joueur devant jouer a la situation
         char m_col;
         ///Profondeur de parcours de la situation
         int m_depth;
-        ///Coordonées du dernier coup joué
+        ///Coordonées du dernier coup joue
         int m_x,m_y;
-        ///Tableau de situation pouvant succéder a celle-ci
+        ///Tableau de situation pouvant succeder a celle-ci
         vector <situation*> m_succesors;
         ///Tableau des mouvements disponibles a cette situation
         vector < vector <vector <int> > > m_moves;
