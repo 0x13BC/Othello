@@ -69,8 +69,10 @@ char game::get_symbol(char input)
 }
 void game::display(int x, int y)
 {
+    if(x==0 && y==0) system("cls");
     Console* ecran;
     ecran= Console::getInstance();
+        ecran->setColor(COLOR_DEFAULT);
     for(int i=0; i<BOARD_SIZE; i++)
         for(int j=0; j<BOARD_SIZE; j++)
         {
@@ -79,7 +81,7 @@ void game::display(int x, int y)
             //ecran->setColor(COLOR_GREEN);
             cout << get_symbol(m_board[i][j]);
         }
-        ecran->setColor(COLOR_DEFAULT);
+
     ecran->setColor(COLOR_GREEN);
     int line=1;
     char Column='A';
@@ -88,7 +90,7 @@ void game::display(int x, int y)
             //std::cout<<"\xBA";
 
 
-    if(x==0 && y==0) system("cls");
+
 
     for(int i=0; i<BOARD_SIZE; i++)
     {
@@ -99,14 +101,7 @@ void game::display(int x, int y)
         line++;
     }
 
-    for(int j=0; j<BOARD_SIZE; j++)
-    {
-        ecran->gotoLigCol(x, 4*j+3+y);
-        std::cout<<Column;
-        ecran->gotoLigCol(2+x+BOARD_SIZE*2, 3+y+j*4);
-       std::cout<<Column;
-        Column++;
-    }
+
 
     for(int i=0; i<=BOARD_SIZE; i++)
     for(int j=0; j<(BOARD_SIZE*4)-1; j++)
@@ -120,6 +115,16 @@ void game::display(int x, int y)
         ecran->gotoLigCol(1+x+i, 1+y+j*4);
         std::cout<<"\xBA";
     }
+
+    for(int j=0; j<BOARD_SIZE; j++)
+    {
+        ecran->gotoLigCol(x, 4*j+3+y);
+        std::cout<<Column;
+        ecran->gotoLigCol(2+x+BOARD_SIZE*2, 3+y+j*4);
+       std::cout<<Column;
+        Column++;
+    }
+    cout << endl;
     ecran->setColor(COLOR_DEFAULT);
 
 
@@ -288,6 +293,8 @@ int game::Getwin()
             countb+=counte;
 
             cout << "Black " << get_symbol('b') << " wins " << countb << " to " << countw << endl << "Congratulations!";
+            Sleep(300);
+            system("cls");
             return 1;
         }
         else
@@ -295,6 +302,8 @@ int game::Getwin()
             countw+=counte;
 
             cout << "White " << get_symbol('w') << " wins " << countw << " to " << countb << endl << "Congratulations!";
+            Sleep(300);
+            system("cls");
             return 1;
         }
 

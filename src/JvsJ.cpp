@@ -113,7 +113,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
 
 
         buff=joueur2.play(ia_lvl, jeu.m_board, affichage);
-        cout << "IA plays in " << buff[0] << "  " << buff[1]<< endl;
+        cout << "IA plays in " << buff[0]+1 << "  " << (char)('A'+buff[1])<< endl;
         cout << "COMPUTE TIME " ;
         timer.stop();
          timer.GetSec();

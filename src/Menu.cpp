@@ -50,7 +50,7 @@ case 3:
 
     cin >> input;
     file.open(input+".txt");
-    if(!file.isopen())
+    if(!file.is_open())
     {
         cout << "Ce fichier n'existe pas";
         Sleep(300);
