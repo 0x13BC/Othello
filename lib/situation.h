@@ -11,7 +11,7 @@ class situation : public game
         int m_x,m_y;
         vector <situation*> m_succesors;
         vector < vector <vector <int> > > m_moves;
-        vector < vector <int> > m_heuristique;
+        //vector < vector <int> > m_heuristique;
 
         void get_moves();
         int is_end();
