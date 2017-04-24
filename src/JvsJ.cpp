@@ -22,7 +22,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
         cout<<endl<<"Au tour du joueur 1"<<endl;
         if(J1.deplacement(&x,&y,&jeu, J1.getcol()))return 1;
 
-        }while (jeu.Place(x/2,y/3,J1.getcol()));
+        }while (jeu.Place(x/2,y/4,J1.getcol()));
         }
         else
         {
@@ -45,7 +45,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
         cout<<endl<<"Au tour du joueur 2"<<endl;
         if(J2.deplacement(&x,&y,&jeu, J2.getcol(),0)) return 1;
 
-        }while (jeu.Place(x/2,y/3,J2.getcol()));
+        }while (jeu.Place(x/2,y/4,J2.getcol()));
         }
         else
         {
@@ -84,7 +84,7 @@ int JvsJ(vector< vector <char> > board, char col_start)
 
         if(J1.deplacement(&x,&y,&jeu,J1.getcol(), 1, ia_lvl)) return 1;
 
-        }while (jeu.Place(x/2,y/3,J1.getcol()));
+        }while (jeu.Place(x/2,y/4,J1.getcol()));
         }
         else
         {

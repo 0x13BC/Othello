@@ -20,7 +20,7 @@ int Joueur::deplacement(int* x, int* y, game* jeu, char play_col, int gamemode, 
 int test=1;
 while(test!=0)
 {
-    truc->gotoLigCol((*x),(*y));
+    truc->gotoLigCol(2+(*x),3+(*y));
     switch (truc->getInputKey())
     {
     case 'z':
@@ -28,7 +28,7 @@ while(test!=0)
           if ((*x)>0)
           {
               (*x)-=2;
-              truc->gotoLigCol((*x),(*y));
+              truc->gotoLigCol(2+(*x),3+(*y));
           }
         break;
 
@@ -37,7 +37,7 @@ while(test!=0)
             if ((*x)<14)
             {
                 (*x)+=2;
-            truc->gotoLigCol((*x),(*y));
+            truc->gotoLigCol(2+(*x),3+(*y));
             }
 
            break;
@@ -45,16 +45,16 @@ while(test!=0)
     case 'q':
 
             if ((*y)>0){
-                    (*y)-=3;
-            truc->gotoLigCol((*x),(*y));
+                    (*y)-=4;
+            truc->gotoLigCol(2+(*x),3+(*y));
             }
             break;
 
     case 'd':
 
-            if ((*y)<21){
-                    (*y)+=3;
-            truc->gotoLigCol((*x),(*y));
+            if ((*y)<25){
+                    (*y)+=4;
+            truc->gotoLigCol(2+(*x),3+(*y));
 
             }
             break;
@@ -73,9 +73,9 @@ while(test!=0)
         }
         cout<< " ";
         Sleep(300);
-        truc->gotoLigCol((*x),(*y));
-        cout<< jeu->get_symbol(jeu->m_board[*x/2][*y/3]);
-        truc->gotoLigCol((*x),(*y));
+        truc->gotoLigCol(2+(*x),3+(*y));
+        cout<< jeu->get_symbol(jeu->m_board[*x/2][*y/4]);
+        truc->gotoLigCol(2+(*x),3+(*y));
 
     }
     return 0;

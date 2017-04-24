@@ -69,16 +69,57 @@ char game::get_symbol(char input)
 void game::display(int x, int y)
 {
     Console* ecran;
+    ecran->setColor(COLOR_GREEN);
+    int line=1;
+    char Column='A';
+
+            //for(int k=0; k<=8; k++)std::cout<<"\xC4";
+            //std::cout<<"\xBA";
+
     ecran= Console::getInstance();
     if(x==0 && y==0) system("cls");
+
+    for(int i=0; i<BOARD_SIZE; i++)
+    {
+        ecran->gotoLigCol(2+x+i*2, y);
+        std::cout<<line;
+        ecran->gotoLigCol(2+x+i*2, 2+y+BOARD_SIZE*4);
+        std::cout<<line;
+        line++;
+    }
+
+    for(int j=0; j<BOARD_SIZE; j++)
+    {
+        ecran->gotoLigCol(x, 4*j+3+y);
+        std::cout<<Column;
+        ecran->gotoLigCol(2+x+BOARD_SIZE*2, 3+y+j*4);
+       std::cout<<Column;
+        Column++;
+    }
+
+    for(int i=0; i<=BOARD_SIZE; i++)
+    for(int j=0; j<(BOARD_SIZE*4)-1; j++)
+    {
+        ecran->gotoLigCol(1+x+i*2, 2+y+j);
+        std::cout<<"\xC4";
+    }
+    for(int i=0; i<=BOARD_SIZE*2; i++)
+    for(int j=0; j<=(BOARD_SIZE); j++)
+    {
+        ecran->gotoLigCol(1+x+i, 1+y+j*4);
+        std::cout<<"\xBA";
+    }
+    ecran->setColor(COLOR_DEFAULT);
+
     for(int i=0; i<BOARD_SIZE; i++)
         for(int j=0; j<BOARD_SIZE; j++)
         {
-            ecran->gotoLigCol(x+2*i, y+3*j);
+            ecran->gotoLigCol(2+x+2*i, 3+y+4*j);
             //switch(m_board[i][j])
             //ecran->setColor(COLOR_GREEN);
             cout << get_symbol(m_board[i][j]);
         }
+        ecran->setColor(COLOR_DEFAULT);
 }
 
 int game::Place(int x, int y, char col)
