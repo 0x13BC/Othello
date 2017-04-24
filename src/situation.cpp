@@ -219,11 +219,12 @@ void situation::get_all_successors()
 }
 
 vector <int> situation::assess3(char ia_col, int al, int be, int affichage)
+///@brief Fonction Alpha_Beta
 {
 
     vector <int> result= {0,0,(ia_col==m_col? MIN_HEURISTIC+1 : MAX_HEURISTIC-1)};
     vector <int> buff;
-    int alpha= al;
+    int alpha= al; //alpha et beta
     int beta= be;
     situation* buffer=NULL;
 
